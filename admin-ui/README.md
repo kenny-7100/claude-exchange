@@ -1,78 +1,37 @@
-# React + TypeScript + Vite
+# 合约管理与调试前端
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+`admin-ui/` 是本项目计划用于个人学习测试的管理前端，基于 React、TypeScript 和 Vite。目标是通过可视化界面操作已部署到 Solana devnet 的合约，查看链上状态和交易结果。
 
-Currently, two official plugins are available:
+## 已确定的方向
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+用户计划在该前端中提供以下操作入口：
 
-## React Compiler
+- 创建 pool，以及查看相关池子状态。
+- 创建 market，以及配置和查看相关市场信息。
+- 提交 mock 报价，以及查看报价状态和更新时间。
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+具体页面设计、参数、初始化依赖和操作流程尚待后续确定。当前只沉淀项目定位，不实施上述功能。
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+测试 Token 查询与增发、钱包角色展示、流动性操作等是可扩展方向，尚未确定为本阶段的实施范围。
 
-## Expanding the ESLint configuration
+## 当前状态与接入基础
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+目前为前端基础项目，尚未接入钱包、合约交易或 mock 报价功能。后续接入以当前已部署的 devnet 实例为基础：
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- 8 个程序已部署，构建启用 `devnet,mock`。
+- 默认 Store、16 个角色和 mock verifier 访问控制已初始化。
+- 9 个 K 系列 SPL 测试 Token 已部署，每个初始增发 1 个到管理员钱包。
+- 市场、Token Map、oracle/price-feed 等后续业务账户尚未初始化，mock 喂价尚未验证。
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+公开信息来源：
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- [程序部署记录](../config/devnet-mock-deployment.json)。
+- [Store 与访问控制初始化记录](../config/devnet-mock-initialization.json)。
+- [测试 Token 配置与操作说明](../tokens/README.md)，各 Token 的实际地址和权限见对应目录中的 `token.json`。
+- [Devnet 操作说明](../DEVNET-MOCK.md)。
 
-```
+## 后续实现约定
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+前端复用上述公开部署信息，避免手工维护相互冲突的程序地址和 Token 地址。需要签名的操作由连接的钱包完成；私钥由钱包保管，不得读取或打包 `config/devnet-mock.local/` 下的密钥，也不得将含凭据的本地 Solana CLI RPC 配置直接暴露到前端。
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+界面应明确展示当前网络、连接钱包、操作前置条件、交易执行状态和失败原因，方便理解每次操作对链上状态的影响。文档统一使用中文，并明确区分计划功能与已实现功能。
