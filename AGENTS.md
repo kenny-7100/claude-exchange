@@ -6,13 +6,21 @@
 - 已使用独立 Program ID 将全部 8 个程序部署到 devnet，构建 features 为 `devnet,mock`，不启用 `test-only` 或 `migration`。
 - 部署信息见 `config/devnet-mock-deployment.json`，操作说明见 `DEVNET-MOCK.md`。
 - 已初始化默认 Store、16 个角色及 mock verifier access control；Store authority、receiver、holding 和全部角色均为当前部署钱包，mock access controller 的 user 为 Store PDA。
-- 初始化记录见 `config/devnet-mock-initialization.json`，可用 `just initialize-devnet-mock` 重复运行；代币、市场、oracle 等后续业务账户尚未初始化，尚未验证 mock 喂价。
+- 初始化记录见 `config/devnet-mock-initialization.json`，可用 `just initialize-devnet-mock` 重复运行；市场、Token Map、oracle 等后续业务账户尚未初始化，尚未验证 mock 喂价。
+- 已将全部 9 个 K 系列 SPL 测试 Token 部署到 devnet，初始供应量和管理员余额均为 1；增发及 metadata 更新权限均保留给当前 CLI 钱包，未设置冻结权限。配置和链上记录见 `tokens/*/token.json`，中文说明见 `tokens/README.md`。
 - 私钥位于 Git 忽略的 `config/devnet-mock.local/`，不得提交。
 
 ## 文档语言
 
 - 今后新增和更新的项目文档统一使用中文，包括 README、操作说明、设计说明和阶段性记录。
 - 代码标识符、命令、配置字段、地址及必要的技术名称保留原文。
+
+## TypeScript 脚本
+
+- Token 部署及后续管理工具使用 TypeScript，放在 `scripts/` 下，通过项目本地 `tsx` 运行。
+- 根目录使用 npm 管理脚本依赖，提交 `package-lock.json`，新环境使用 `npm ci` 安装。
+- 使用 `npm run typecheck` 检查脚本类型；`tsx` 执行脚本时不会自动进行类型检查。
+- 测试 Token 使用 `npm run tokens:check` 检查、`npm run tokens:deploy` 部署或恢复、`npm run tokens:verify` 核对；支持 `-- --token kbtc` 指定单个 Token。已有 mint 时不重复增发。
 
 ## Git 提交与推送
 
