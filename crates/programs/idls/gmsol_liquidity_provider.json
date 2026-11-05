@@ -1,5 +1,5 @@
 {
-  "address": "LPMWczEVgXyQ3979XaqqEttanCXmYGvtJqPVtw1PvC8",
+  "address": "5AYX8RNkGA1VfzQaBxch3TbPHpJFT92xQEKJ3YL6HxDL",
   "metadata": {
     "name": "gmsol_liquidity_provider",
     "version": "0.12.0",
@@ -132,7 +132,7 @@
           "docs": [
             "The GT program"
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "position",
@@ -251,7 +251,7 @@
           "docs": [
             "The GT program"
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "position",
@@ -500,7 +500,7 @@
           "docs": [
             "GT program"
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "authority",
@@ -833,7 +833,7 @@
           "docs": [
             "GT program"
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "owner",
@@ -1014,7 +1014,7 @@
           "docs": [
             "GT program"
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "owner",
@@ -1202,7 +1202,7 @@
           "docs": [
             "The GT program"
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "position",

@@ -7,7 +7,7 @@ pub mod states;
 pub use error::CompetitionError;
 pub use instructions::*;
 
-declare_id!("2AxuNr6euZPKQbTwNsLBjzFTZFAevA85F4PW9m9Dv8pc");
+declare_id!("6bLGibyLvSdhnKLUZMHThefc5SAwVWyAXVHjADdA6KSp");
 
 #[program]
 pub mod gmsol_competition {

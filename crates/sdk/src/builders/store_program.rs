@@ -197,7 +197,7 @@ mod tests {
         let program = StoreProgram::default();
         assert_eq!(
             program.store.to_string(),
-            "CTDLvGGXnoxvqLyTpGzdGLg9pD6JexKxKXSV8tqqo8bN"
+            "ED4mDmQ5ZY9tDyFd598QHj3DbFrDNGc57jeLHgprEFEM"
         );
     }
 
@@ -207,7 +207,7 @@ mod tests {
         let program = StoreProgram::default();
         assert_eq!(
             serde_json::to_string(&program).unwrap(),
-            r#"{"id":"Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo","store":"CTDLvGGXnoxvqLyTpGzdGLg9pD6JexKxKXSV8tqqo8bN"}"#
+            r#"{"id":"14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt","store":"ED4mDmQ5ZY9tDyFd598QHj3DbFrDNGc57jeLHgprEFEM"}"#
         );
     }
 }

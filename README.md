@@ -1,5 +1,8 @@
 # GMX-Solana
 
+This checkout is configured for an independent **devnet + mock oracle** deployment.
+See [DEVNET-MOCK.md](DEVNET-MOCK.md) for build commands, deployment scope, and the public deployment manifest.
+
 [![Crates.io](https://img.shields.io/crates/v/gmsol-sdk.svg)](https://crates.io/crates/gmsol-sdk)
 [![Docs.rs](https://docs.rs/gmsol-sdk/badge.svg)](https://docs.rs/gmsol-sdk)
 [![npm](https://img.shields.io/npm/v/@gmsol-labs/gmsol-sdk.svg)](https://www.npmjs.com/package/@gmsol-labs/gmsol-sdk)

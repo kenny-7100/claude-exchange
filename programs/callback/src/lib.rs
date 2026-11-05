@@ -19,7 +19,7 @@ use anchor_lang::prelude::*;
 
 use instructions::*;
 
-declare_id!("9JtQ9fBS91b2YxmHXNeGE8ipQYhLd2DRGGZSV8SPTJGw");
+declare_id!("H9nZ43b1iMeoPEFwwwYgV3UVgQCPc5G6sZHpCqisoMTN");
 
 /// Seed for the callback authority.
 #[constant]

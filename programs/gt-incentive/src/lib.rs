@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("6iMXVSjiBf75ce9QaUVRnpsUikW8SZm8EaPVGDPfsCso");
+declare_id!("46DPoktitZL3c3kau4i4QCMFvtz23XpaytyGK2dH5MYD");
 
 #[program]
 pub mod gmsol_gt_incentive {

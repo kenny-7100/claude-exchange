@@ -7,7 +7,7 @@ pub use crate::{
 };
 
 #[cfg(not(feature = "no-competition"))]
-const COMPETITION_ID: Pubkey = pubkey!("2AxuNr6euZPKQbTwNsLBjzFTZFAevA85F4PW9m9Dv8pc");
+const COMPETITION_ID: Pubkey = pubkey!("6bLGibyLvSdhnKLUZMHThefc5SAwVWyAXVHjADdA6KSp");
 
 /// Callback interface for GMX-Solana.
 #[derive(Debug, Clone, Copy, Default)]

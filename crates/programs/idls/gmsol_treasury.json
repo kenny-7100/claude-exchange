@@ -1,5 +1,5 @@
 {
-  "address": "GTuvYD5SxkTq4FLG6JV1FQ5dkczr1AfgDcBHaFsBdtBg",
+  "address": "G9DMZS9KHir3AsYKMV3T3H7siwabw5RPYBU6jXTHd3WS",
   "metadata": {
     "name": "gmsol_treasury",
     "version": "0.12.0",
@@ -145,7 +145,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "token_program",
@@ -361,7 +361,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "token_program",
@@ -472,7 +472,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "token_program",
@@ -585,7 +585,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "chainlink_program",
@@ -825,7 +825,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "token_program",
@@ -1033,38 +1033,38 @@
             "program": {
               "kind": "const",
               "value": [
+                0,
+                255,
+                11,
                 234,
-                94,
-                74,
-                175,
-                228,
-                208,
-                167,
-                114,
-                85,
-                24,
-                18,
-                149,
+                20,
+                253,
+                233,
+                134,
+                177,
+                121,
+                236,
+                246,
+                20,
+                230,
+                230,
+                22,
+                169,
+                180,
                 120,
-                219,
-                76,
-                130,
-                12,
-                54,
-                252,
-                80,
-                147,
-                170,
-                106,
-                18,
-                19,
-                192,
-                130,
-                125,
-                110,
-                213,
-                68,
-                8
+                137,
+                30,
+                8,
+                105,
+                72,
+                177,
+                253,
+                88,
+                214,
+                26,
+                41,
+                159,
+                121
               ]
             }
           },
@@ -1393,7 +1393,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "token_program",
@@ -1500,7 +1500,7 @@
           "docs": [
             "The store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "system_program",
@@ -1601,7 +1601,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "system_program",
@@ -1680,7 +1680,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         }
       ],
       "args": []
@@ -1776,7 +1776,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "system_program",
@@ -1850,7 +1850,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         }
       ],
       "args": []
@@ -1899,7 +1899,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         }
       ],
       "args": [
@@ -1953,7 +1953,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         }
       ],
       "args": [
@@ -2008,7 +2008,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         }
       ],
       "args": [
@@ -2073,7 +2073,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         }
       ],
       "args": []
@@ -2333,7 +2333,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "token_program",
@@ -2419,7 +2419,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         }
       ],
       "args": [
@@ -2511,7 +2511,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "system_program",
@@ -2682,7 +2682,7 @@
           "docs": [
             "Store program."
           ],
-          "address": "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+          "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         },
         {
           "name": "token_program",

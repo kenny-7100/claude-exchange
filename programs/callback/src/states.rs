@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 
 /// The expected program ID of the caller.
-pub const CALLER_PROGRAM_ID: Pubkey = pubkey!("Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo");
+pub const CALLER_PROGRAM_ID: Pubkey = pubkey!("14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt");
 
 /// Maximum length of the prefix.
 #[constant]

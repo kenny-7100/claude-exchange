@@ -24,7 +24,7 @@ VERIFIABLE := TARGET / "verifiable"
 STORE_PROGRAM := VERIFIABLE / "gmsol_store.so"
 TREASURY_PROGRAM := VERIFIABLE / "gmsol_treasury.so"
 TIMELOCK_PROGRAM := VERIFIABLE / "gmsol_timelock.so"
-MOCK_CHAINLINK_PROGRAM := VERIFIABLE / "mock_chainlink_verifier.so"
+MOCK_CHAINLINK_PROGRAM := VERIFIABLE / "gmsol_mock_chainlink_verifier.so"
 
 default: lint test-crates test-programs
 
@@ -138,3 +138,19 @@ install-cli *ARGS:
 
 install-cli-nightly *ARGS:
   cargo install --path crates/cli --features nightly,{{CLI_FEATURES}} --locked {{ARGS}}
+
+# Build this independent devnet instance, including the mock verifier.
+build-devnet-mock:
+  anchor build --no-idl -- --tools-version v1.56 --arch v0 --features devnet,mock -- --locked
+  just build-devnet-mock-idls
+
+build-devnet-mock-idls:
+  mkdir -p target/idl
+  for program in gmsol_store gmsol_treasury gmsol_timelock gmsol_mock_chainlink_verifier gmsol_callback gmsol_competition gmsol_liquidity_provider gmsol_gt_incentive; do anchor idl build -p "$program" -o "target/idl/$program.json" || exit; done
+  for idl in crates/programs/idls/*.json; do cp "target/idl/$(basename "$idl")" "$idl"; done
+
+deploy-devnet-mock:
+  python3 scripts/deploy_devnet_mock.py
+
+verify-devnet-mock:
+  python3 scripts/deploy_devnet_mock.py --verify-only

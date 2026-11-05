@@ -8,20 +8,30 @@ skip-lint = false
 
 [programs.localnet]
 # Lib names must be used here, otherwise they will not be recognized by the Anchor CLI.
-gmsol_store = "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
-gmsol_treasury = "GTuvYD5SxkTq4FLG6JV1FQ5dkczr1AfgDcBHaFsBdtBg"
-gmsol_timelock = "TimeBQ7gQyWyQMD3bTteAdy7hTVDNWSwELdSVZHfSXL"
-gmsol_mock_chainlink_verifier = "4nMxSRfeW7W2zFbN8FJ4YDvuTzEzCo1e6GzJxJLnDUoZ"
-gmsol_callback = "9JtQ9fBS91b2YxmHXNeGE8ipQYhLd2DRGGZSV8SPTJGw"
-gmsol_competition = "2AxuNr6euZPKQbTwNsLBjzFTZFAevA85F4PW9m9Dv8pc"
-gmsol_liquidity_provider = "LPMWczEVgXyQ3979XaqqEttanCXmYGvtJqPVtw1PvC8"
-gmsol_gt_incentive = "6iMXVSjiBf75ce9QaUVRnpsUikW8SZm8EaPVGDPfsCso"
+gmsol_store = "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
+gmsol_treasury = "G9DMZS9KHir3AsYKMV3T3H7siwabw5RPYBU6jXTHd3WS"
+gmsol_timelock = "H952HpN1HP8vjz4FLqbZSYXn7B86WL9cRGzxj9dWs4sU"
+gmsol_mock_chainlink_verifier = "4r2gEz7YfN9nWWpC3DQPSSKfHARAf5QaCp5GJWQGEift"
+gmsol_callback = "H9nZ43b1iMeoPEFwwwYgV3UVgQCPc5G6sZHpCqisoMTN"
+gmsol_competition = "6bLGibyLvSdhnKLUZMHThefc5SAwVWyAXVHjADdA6KSp"
+gmsol_liquidity_provider = "5AYX8RNkGA1VfzQaBxch3TbPHpJFT92xQEKJ3YL6HxDL"
+gmsol_gt_incentive = "46DPoktitZL3c3kau4i4QCMFvtz23XpaytyGK2dH5MYD"
+
+[programs.devnet]
+gmsol_store = "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
+gmsol_treasury = "G9DMZS9KHir3AsYKMV3T3H7siwabw5RPYBU6jXTHd3WS"
+gmsol_timelock = "H952HpN1HP8vjz4FLqbZSYXn7B86WL9cRGzxj9dWs4sU"
+gmsol_mock_chainlink_verifier = "4r2gEz7YfN9nWWpC3DQPSSKfHARAf5QaCp5GJWQGEift"
+gmsol_callback = "H9nZ43b1iMeoPEFwwwYgV3UVgQCPc5G6sZHpCqisoMTN"
+gmsol_competition = "6bLGibyLvSdhnKLUZMHThefc5SAwVWyAXVHjADdA6KSp"
+gmsol_liquidity_provider = "5AYX8RNkGA1VfzQaBxch3TbPHpJFT92xQEKJ3YL6HxDL"
+gmsol_gt_incentive = "46DPoktitZL3c3kau4i4QCMFvtz23XpaytyGK2dH5MYD"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]

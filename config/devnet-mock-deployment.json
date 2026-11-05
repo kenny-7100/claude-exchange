@@ -1,0 +1,150 @@
+{
+  "cluster": "devnet",
+  "genesis_hash": "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG",
+  "features": [
+    "devnet",
+    "mock"
+  ],
+  "upgrade_authority": "J11xHtw4dkogTwexUkWaMH8PyFNGYdJuLg5TNvxeag4Q",
+  "programs": {
+    "gmsol_store": {
+      "program_id": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt",
+      "keypair": "config/devnet-mock.local/gmsol_store-keypair.json",
+      "deploy_result": {
+        "programId": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt",
+        "signature": "UNRVy2DFbE3ZrvhTnsLcpCTQiKoMbeDpPMA6N6fLs2TTScs75TmRwxjc23xbaHpFZq8dze2DEyJLV6F9TsGCMuE"
+      },
+      "sha256": "8c758bf241adfe4a234c8435a944fe1e0c929adc9ad8c3749e60d4eac4000d63",
+      "binary_bytes": 3822640,
+      "programdata_address": "4MZsNRTtXByKLsqiGhnuvV18vTVeaRDcttU99F1fNjbM",
+      "last_deploy_slot": 518962328,
+      "verified_at": "2026-11-05T14:04:54.977471+00:00",
+      "programdata_lamports": 19419890040,
+      "allocated_bytes": 3822640
+    },
+    "gmsol_treasury": {
+      "program_id": "G9DMZS9KHir3AsYKMV3T3H7siwabw5RPYBU6jXTHd3WS",
+      "keypair": "config/devnet-mock.local/gmsol_treasury-keypair.json",
+      "deploy_result": {
+        "programId": "G9DMZS9KHir3AsYKMV3T3H7siwabw5RPYBU6jXTHd3WS",
+        "signature": "2xkykD14HiSLmd66C4RhrCtVwFSCoh34Zf5Wo7hQzw5XGwCd32okh2ezv8Czti2HEihrK3DVzivcGYcoiHLnDid9"
+      },
+      "sha256": "cd325cb8b56854de1f03838fe9c00a94ed05850220baecec494900f9cc9df6b7",
+      "binary_bytes": 770248,
+      "programdata_address": "2MkRAfGssiaNJMxfWueeXHDu1pGu2vH4vSPtH4orJbdM",
+      "last_deploy_slot": 518962481,
+      "verified_at": "2026-11-05T14:05:25.868848+00:00",
+      "programdata_lamports": 3913738680,
+      "allocated_bytes": 770248
+    },
+    "gmsol_timelock": {
+      "program_id": "H952HpN1HP8vjz4FLqbZSYXn7B86WL9cRGzxj9dWs4sU",
+      "keypair": "config/devnet-mock.local/gmsol_timelock-keypair.json",
+      "deploy_result": {
+        "programId": "H952HpN1HP8vjz4FLqbZSYXn7B86WL9cRGzxj9dWs4sU",
+        "signature": "5Jvnx6sB2rQfUQMaHvhzL6SVrYyBTUpJZSN1EfurLiZi6N3dUHMeBxZKUp6V9JjQNWy6qCBxKmtspwKkw6Kuzhtu"
+      },
+      "sha256": "0aafad97328a39fe02dd4b071ba2da53590c90f237134a88700cff9665cf28f8",
+      "binary_bytes": 416752,
+      "programdata_address": "CdTme6Y48A1V3Dk79JPMrZjTBHZMMUtHMmdAdpJc3jxo",
+      "last_deploy_slot": 518962576,
+      "verified_at": "2026-11-05T14:05:50.633770+00:00",
+      "programdata_lamports": 2117979000,
+      "allocated_bytes": 416752
+    },
+    "gmsol_mock_chainlink_verifier": {
+      "program_id": "4r2gEz7YfN9nWWpC3DQPSSKfHARAf5QaCp5GJWQGEift",
+      "keypair": "config/devnet-mock.local/gmsol_mock_chainlink_verifier-keypair.json",
+      "deploy_result": {
+        "programId": "4r2gEz7YfN9nWWpC3DQPSSKfHARAf5QaCp5GJWQGEift",
+        "signature": "3rtQhvb86GZjp5ksqLVS7YGjMqUDUvqGPFs7pH67r9oCqJNGJysSmmNzxdHnE5qazuVKH5pczu7kzmuJ78Li3BhQ"
+      },
+      "sha256": "a98406ba577aa8a7fe73961b90cc07600d6fbbab120ca06a6ac8bc9650b11fd3",
+      "binary_bytes": 224608,
+      "programdata_address": "3p646XX425SqtxExdkunPhbJxzEXJ4NTFcxwmUtdtBHU",
+      "last_deploy_slot": 518962092,
+      "verified_at": "2026-11-05T14:03:54.718166+00:00",
+      "programdata_lamports": 1141887480,
+      "allocated_bytes": 224608
+    },
+    "gmsol_callback": {
+      "program_id": "H9nZ43b1iMeoPEFwwwYgV3UVgQCPc5G6sZHpCqisoMTN",
+      "keypair": "config/devnet-mock.local/gmsol_callback-keypair.json",
+      "deploy_result": {
+        "programId": "H9nZ43b1iMeoPEFwwwYgV3UVgQCPc5G6sZHpCqisoMTN",
+        "signature": "4y2LWCcrHJWNkvvPnCWUtapfn7a3bKZyqbGMq127yoHiHvkmJh3cn7BQBDhbdjkmQxfkCm5CrgoRYPwx6cK8XKXP"
+      },
+      "sha256": "194c1a04450b80e8df26a57ba70320fdd5ec6fdf57953a6e48b947b9a7251ca8",
+      "binary_bytes": 221160,
+      "programdata_address": "H1rNfVHqdeKzLfNLLjdAw2SyupCYv3cG5JDSyXkHABfq",
+      "last_deploy_slot": 518962679,
+      "verified_at": "2026-11-05T14:06:13.568537+00:00",
+      "programdata_lamports": 1124371640,
+      "allocated_bytes": 221160
+    },
+    "gmsol_competition": {
+      "program_id": "6bLGibyLvSdhnKLUZMHThefc5SAwVWyAXVHjADdA6KSp",
+      "keypair": "config/devnet-mock.local/gmsol_competition-keypair.json",
+      "deploy_result": {
+        "programId": "6bLGibyLvSdhnKLUZMHThefc5SAwVWyAXVHjADdA6KSp",
+        "signature": "2CJQtNjs4GPptqbQH9tVQYrcBMtBbthtHnjdBQTcnXfcXUjbMBHwEvatupcSwhFxwfPg8nrGBJbAe1iY4QnLtDyc"
+      },
+      "sha256": "bf5d1bfd1b4a9a95e0349bb96129d4d1a510c3a20beab66200cdc974cfb95a15",
+      "binary_bytes": 278160,
+      "programdata_address": "EHs31THiimskTQgUG1yTK9jo4bHj9mxbnLgeZqRhezxA",
+      "last_deploy_slot": 518962764,
+      "verified_at": "2026-11-05T14:06:33.523833+00:00",
+      "programdata_lamports": 1413931640,
+      "allocated_bytes": 278160
+    },
+    "gmsol_liquidity_provider": {
+      "program_id": "5AYX8RNkGA1VfzQaBxch3TbPHpJFT92xQEKJ3YL6HxDL",
+      "keypair": "config/devnet-mock.local/gmsol_liquidity_provider-keypair.json",
+      "deploy_result": {
+        "programId": "5AYX8RNkGA1VfzQaBxch3TbPHpJFT92xQEKJ3YL6HxDL",
+        "signature": "3ysTUymimQdF2yY1KoHt39Y2F6q8qBiBZPZmKbkrm3uUgcRYGdGqN2awfSGs5Jb4G95YYeWADqtoBw5GzPfBwUBi"
+      },
+      "sha256": "41ab60c482104ac5af3adbbcc81c7a58f14e4a8e018ec193fc9acdd52faa2a78",
+      "binary_bytes": 494536,
+      "programdata_address": "HoNTBvW91Q9aonmN41YJ7rZ9dnVhcxXtNS4rxa5PhbNS",
+      "last_deploy_slot": 518962866,
+      "verified_at": "2026-11-05T14:07:00.377967+00:00",
+      "programdata_lamports": 2513121720,
+      "allocated_bytes": 494536
+    },
+    "gmsol_gt_incentive": {
+      "program_id": "46DPoktitZL3c3kau4i4QCMFvtz23XpaytyGK2dH5MYD",
+      "keypair": "config/devnet-mock.local/gmsol_gt_incentive-keypair.json",
+      "deploy_result": {
+        "programId": "46DPoktitZL3c3kau4i4QCMFvtz23XpaytyGK2dH5MYD",
+        "signature": "3t8UCbwsQ8WXCEiXL3CYrg3jrujErtaLXWaUNRpub7Qe3N392nP8U3hiofkWuxx1VLQYKuSrD53jyAhkNXonXMuq"
+      },
+      "sha256": "c19da8e7e3f3802ccc2fbdb8f556034c2731e185b8cb0e6877bbe1ea98bbae65",
+      "binary_bytes": 176464,
+      "programdata_address": "4yKaGGhvqXtsgaP9RSKgHdqU4w48ySyCD3nA6rKYUXWz",
+      "last_deploy_slot": 518962963,
+      "verified_at": "2026-11-05T14:07:22.404499+00:00",
+      "programdata_lamports": 897315960,
+      "allocated_bytes": 176464
+    }
+  },
+  "default_store_pda": "ED4mDmQ5ZY9tDyFd598QHj3DbFrDNGc57jeLHgprEFEM",
+  "source_commit": "1e3e397c298db8597a45132881f2bb87ec5b00c4",
+  "toolchain": {
+    "anchor": "0.31.1",
+    "solana_cli": "2.1.21",
+    "sbf_builder": "4.4.0",
+    "platform_tools": "v1.56",
+    "sbf_arch": "v0",
+    "idl_rust": "1.101.0-nightly (92b5b8c87 2026-10-29)"
+  },
+  "scope": {
+    "programs_deployed": true,
+    "business_accounts_initialized": false,
+    "mock_prices_tested": false,
+    "idls_uploaded_on_chain": false
+  },
+  "balance_before_lamports": 259999269826,
+  "balance_after_lamports": 227418548706,
+  "deployment_spent_lamports": 32580721120
+}

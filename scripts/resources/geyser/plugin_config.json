@@ -2,12 +2,12 @@
     "libpath": "plugin.geyser",
     "accounts_selector": {
         "owners": [
-            "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+            "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         ]
     },
     "transaction_selector": {
         "mentions": [
-            "Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+            "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
         ]
     }
 }

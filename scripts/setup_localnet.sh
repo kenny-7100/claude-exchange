@@ -57,7 +57,7 @@ else
 fi
 
 export CLUSTER=localnet
-export STORE_PROGRAM_ID="Gmso1uvJnLbawvw7yezdfCDcPydwW2s2iqG3w6MDucLo"
+export STORE_PROGRAM_ID="14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt"
 
 export KEEPER_ADDRESS=$(solana-keygen pubkey $GMSOL_KEEPER)
 solana -ul airdrop 10000 $KEEPER_ADDRESS
