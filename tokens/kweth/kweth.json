@@ -1,0 +1,15 @@
+{
+  "name": "KWETH",
+  "symbol": "KWETH",
+  "description": "KWETH is a test token for the KGMX exchange on Solana devnet. It has no real-world monetary value.",
+  "image": "https://kgmx.jimao.uk/image/kweth.svg",
+  "properties": {
+    "files": [
+      {
+        "uri": "https://kgmx.jimao.uk/image/kweth.svg",
+        "type": "image/svg+xml"
+      }
+    ],
+    "category": "image"
+  }
+}

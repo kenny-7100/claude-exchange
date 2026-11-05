@@ -1,0 +1,15 @@
+{
+  "name": "KBTC",
+  "symbol": "KBTC",
+  "description": "KBTC is a test token for the KGMX exchange on Solana devnet. It has no real-world monetary value.",
+  "image": "https://kgmx.jimao.uk/image/kbtc.svg",
+  "properties": {
+    "files": [
+      {
+        "uri": "https://kgmx.jimao.uk/image/kbtc.svg",
+        "type": "image/svg+xml"
+      }
+    ],
+    "category": "image"
+  }
+}
