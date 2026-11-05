@@ -5,7 +5,8 @@
 - 本项目为 GMX-Solana，主要使用 Rust、Anchor 0.31.1、Solana CLI 2.1.21。
 - 已使用独立 Program ID 将全部 8 个程序部署到 devnet，构建 features 为 `devnet,mock`，不启用 `test-only` 或 `migration`。
 - 部署信息见 `config/devnet-mock-deployment.json`，操作说明见 `DEVNET-MOCK.md`。
-- 当前仅完成程序代码部署，业务账户和 mock verifier access control 尚未初始化，尚未验证 mock 喂价。
+- 已初始化默认 Store、16 个角色及 mock verifier access control；Store authority、receiver、holding 和全部角色均为当前部署钱包，mock access controller 的 user 为 Store PDA。
+- 初始化记录见 `config/devnet-mock-initialization.json`，可用 `just initialize-devnet-mock` 重复运行；代币、市场、oracle 等后续业务账户尚未初始化，尚未验证 mock 喂价。
 - 私钥位于 Git 忽略的 `config/devnet-mock.local/`，不得提交。
 
 ## Git 提交与推送

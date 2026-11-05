@@ -154,3 +154,7 @@ deploy-devnet-mock:
 
 verify-devnet-mock:
   python3 scripts/deploy_devnet_mock.py --verify-only
+
+# Initialize this personal devnet Store, grant wallet roles and bind the mock verifier.
+initialize-devnet-mock:
+  cargo run -p gmsol-sdk --example initialize_devnet_mock --features client,devnet --locked

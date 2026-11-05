@@ -45,15 +45,42 @@ After a clean, restore the program keypairs into `target/deploy/` before using
 Anchor's own deploy/keys commands; the deployment script uses the persistent
 copies directly.
 
-## Deployment scope
+## Initialize Store and mock access control
 
-This step installs program code only. Store, roles, markets, token maps,
-oracle accounts, and mock verifier access control are not initialized. No mock
-price reports or trading transactions are submitted. GT Incentive is deployed
-as the existing initialization-only program.
+With the same devnet RPC and Solana CLI wallet used for deployment, run:
 
-When initializing the mock verifier later, its permitted `user` must be the
-Store PDA. The default Store PDA for this instance is recorded in the manifest.
+```sh
+just initialize-devnet-mock
+```
+
+The SDK example reads the configured Solana CLI RPC and keypair, checks the
+devnet genesis hash and deployment authority, and initializes the default Store.
+Its authority, receiver and holding addresses are all the CLI wallet. For this
+personal learning instance, all 16 roles in the initialization record are
+enabled and granted to that wallet, including keepers, configuration, Treasury
+and Timelock roles. Migration is excluded. Granting a role does not initialize
+Treasury or Timelock business accounts.
+
+The mock verifier authority is also the CLI wallet. Its access controller's
+permitted `user` is the **Store PDA**, because Store signs the verifier CPI.
+This binding is required even though the wallet holds the keeper permissions.
+The verifier and access-controller PDAs are singleton accounts for this mock
+program; an existing conflicting binding causes initialization to stop.
+
+Public addresses, successful transaction signatures and the verification slot
+are saved to `config/devnet-mock-initialization.json`. Progress is saved after
+each confirmed transaction. Rerunning the command reads chain state, skips
+existing matching initialization and grants, and verifies the resulting state.
+The SDK example requires the `client,devnet` features; it does not rebuild or
+redeploy any on-chain program.
+
+## Remaining scope
+
+Markets, tokens, token maps, oracle/price-feed accounts and other business
+accounts are not initialized. No mock price reports or trading transactions
+are submitted. GT Incentive remains the existing initialization-only program.
+
+The default Store PDA for this instance is also recorded in the deployment manifest.
 Mock prices use the `ChainlinkDataStreams` provider and still require the
 appropriate keeper/authority, matching feed IDs, valid ranges, and fresh
 timestamps. Store compiled with `mock` also continues to accept the real

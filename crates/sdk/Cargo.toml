@@ -12,6 +12,10 @@ keywords.workspace = true
 [lib]
 crate-type = ["cdylib", "rlib"]
 
+[[example]]
+name = "initialize_devnet_mock"
+required-features = ["client", "devnet"]
+
 [features]
 default = ["market-graph", "simulation"]
 treasury = ["gmsol-programs/treasury", "gmsol-utils/treasury"]

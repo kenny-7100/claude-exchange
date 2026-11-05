@@ -1,0 +1,171 @@
+{
+  "access_controller": "6X6uTSS2YYucLLfRHLAFHjNnWfUja96BspgMAudKgzCU",
+  "access_controller_user": "ED4mDmQ5ZY9tDyFd598QHj3DbFrDNGc57jeLHgprEFEM",
+  "authority": "J11xHtw4dkogTwexUkWaMH8PyFNGYdJuLg5TNvxeag4Q",
+  "cluster": "devnet",
+  "holding": "J11xHtw4dkogTwexUkWaMH8PyFNGYdJuLg5TNvxeag4Q",
+  "mock_program": "4r2gEz7YfN9nWWpC3DQPSSKfHARAf5QaCp5GJWQGEift",
+  "receiver": "J11xHtw4dkogTwexUkWaMH8PyFNGYdJuLg5TNvxeag4Q",
+  "roles": [
+    "RESTART_ADMIN",
+    "GT_CONTROLLER",
+    "MARKET_KEEPER",
+    "ORDER_KEEPER",
+    "PRICE_KEEPER",
+    "FEATURE_KEEPER",
+    "CONFIG_KEEPER",
+    "MARKET_CONFIG_KEEPER",
+    "ORACLE_CONTROLLER",
+    "TREASURY_OWNER",
+    "TREASURY_ADMIN",
+    "TREASURY_WITHDRAWER",
+    "TREASURY_KEEPER",
+    "TIMELOCK_ADMIN",
+    "TIMELOCK_KEEPER",
+    "__TLD_ADMIN"
+  ],
+  "store": "ED4mDmQ5ZY9tDyFd598QHj3DbFrDNGc57jeLHgprEFEM",
+  "store_key": "",
+  "transactions": [
+    {
+      "operation": "initialize_store",
+      "signature": "6smAnCPCYjQLj8n73pnF4qquJUD6iy56tZa1qNJaCCch1yrGPuwXU5fALnmpnH4qWjVmXfaF8mvjp8qyjqFioyW"
+    },
+    {
+      "operation": "enable_role:RESTART_ADMIN",
+      "signature": "YXJ9ynMaZnNyLfkQfKGr7sDfh6b5egiyJEjiYSmL6ExKovoAa1AJHmMYxRJyou9aJGT5ENcNXSQaGV49pb3Bz2M"
+    },
+    {
+      "operation": "grant_role:RESTART_ADMIN",
+      "signature": "q4MtVKYEBim1okA2mvTybVKHiQKQdSq9eXuR7yTSeyDnX6TsJDWepdusV9c4inDmwsvZYexeK1g1yZkc2y8XWPL"
+    },
+    {
+      "operation": "enable_role:GT_CONTROLLER",
+      "signature": "3hzZpxkwb9KBz9wNBzkCkb5TJvuYnpJdZvyPQJLut96NhYgzoDGcJeTYSJCwYD2xnXhMUbTki4M1neTvccZXkqQt"
+    },
+    {
+      "operation": "grant_role:GT_CONTROLLER",
+      "signature": "5d4Y5bSr4WGSxNkEBiXfohDX37M2t6M7rCNGpFerCKxm9W5EtWYMcUzG511Nmy25evRC2ZmGuSrXtAVJtcKkqWnN"
+    },
+    {
+      "operation": "enable_role:MARKET_KEEPER",
+      "signature": "4QP2Ha1NFWsSub9CdD2pnbERfMc69QbEy1HeGF9daLZq5nBrCJkZJDQ9DroGw6cn3WsqPPCAHfGL9ruGZUrc5HtJ"
+    },
+    {
+      "operation": "grant_role:MARKET_KEEPER",
+      "signature": "5VcdrdTtmcospgsZHUGjRUjBThvSidJ5vsk3CjRu5oPBQFTSSXsbUsNmM4XCvJihespMQ5qQzLSAsrEiqYR2Rmrm"
+    },
+    {
+      "operation": "enable_role:ORDER_KEEPER",
+      "signature": "4tu4MsDMSo7ezhDqKpNooQQibWtpXZeNRZKajsF1CnvdvZHRQ9xoPRuVmcDgazJHESeJRwVWZA6ma9hHgY3ZLzoV"
+    },
+    {
+      "operation": "grant_role:ORDER_KEEPER",
+      "signature": "2Qw4BDFqeeDNGus1kqiRhUgSJUdzNqcXuQs5RKmDTfo9cziArB4AArAhGSDXH83xSjDaErnCq7YzuKV4qJ3y5vDz"
+    },
+    {
+      "operation": "enable_role:PRICE_KEEPER",
+      "signature": "nutcP6pZpJxTSdAUVgg8pfdgGTuWg2FcRoG5n4bATKPYW9XmMkqpXbXGBpzQgWfC7hgwiPt31PQGDegAMwBjA6v"
+    },
+    {
+      "operation": "grant_role:PRICE_KEEPER",
+      "signature": "2gqdvuWg2ps3kA4fiBwgsAyxqwr6v2UcMUoAuVBz9vGxkFXHUN6jWznDJTJB5EWt4qWQU82VY2SecV8rwsWHRVb9"
+    },
+    {
+      "operation": "enable_role:FEATURE_KEEPER",
+      "signature": "57YaQHexEXttoDSGjypUKSubbKzMFW8JUNLBZBerVH78gfxCW666Lz1UdMCeFtrRCvC484sdaCXbrGJro43RexJh"
+    },
+    {
+      "operation": "grant_role:FEATURE_KEEPER",
+      "signature": "5SpZ3z8rf2B5JoDVybBx51ow8Jv4xpUoBfqZnPvTMUMAysLKtqbtVstkjEBTw78ViJ4wzU4hUgZKSVox873zCyRn"
+    },
+    {
+      "operation": "enable_role:CONFIG_KEEPER",
+      "signature": "L5vLHde7DD6WBHYCwC6h8mc9yTmpqb5zQR2z3sWSSRqFzNBkDfpiVNd7wQDdfr4S9Di6nPg1EGP2D4AciKyBqn4"
+    },
+    {
+      "operation": "grant_role:CONFIG_KEEPER",
+      "signature": "4UwUVLiYxf321uuJgUARnguZWwJxLsy9cswRAHKNf18ehyEhrpH5x1rxhoNMDgDp3SAtYsJRZD9J4tnNwDD1XZZM"
+    },
+    {
+      "operation": "enable_role:MARKET_CONFIG_KEEPER",
+      "signature": "39jzcdpq4JJ4DiuorrM8XcY9h2vwLqFteWFdEAJKzRqTc7cCNxtZCqVY2CaMmWvtaBCXqx5Z9CRZcu8EitHCVSn3"
+    },
+    {
+      "operation": "grant_role:MARKET_CONFIG_KEEPER",
+      "signature": "3pjZQ4HwUsKnU69Xbdh46df5PU9AJRKyeZJoHfFK1ugtrXoWfF9quRfGUZ9WkeFvevuF9so3KZPzrQZ2yK8sCpas"
+    },
+    {
+      "operation": "enable_role:ORACLE_CONTROLLER",
+      "signature": "59yQEn6XbgnUSQ5Cm6TmpVr8VhLScVsW96vduT2xCtsvUFQFyEsnZPRyRY64UENHKvqFuBsLwxbXHNCrXsPgZyeU"
+    },
+    {
+      "operation": "grant_role:ORACLE_CONTROLLER",
+      "signature": "4Gxjgyoc8QTcNEA82G96oJAbo3CfZ88RhyQarBRaYd5cVMGsv3jW3LhTtd1KjTpe8QQggn3NPEdSNTCAHLKvAkwF"
+    },
+    {
+      "operation": "enable_role:TREASURY_OWNER",
+      "signature": "YQZ7bNkf8jCCXZ8iqtNGKdfiABxecnxXzcyAnqwcVAhB5KRsk3swx4m34uFrTjtS1J88ZCrVpzxHwG6TAZnP6kM"
+    },
+    {
+      "operation": "grant_role:TREASURY_OWNER",
+      "signature": "4tFNVuwFDVBjZ1H2cFMBoSurcjreqCyANjtqmbDN4SccSuPZFsguekiDvZEvC7om9vE9DKc8MnCJpwMCpncgfhiZ"
+    },
+    {
+      "operation": "enable_role:TREASURY_ADMIN",
+      "signature": "4HDpAxdUgHzVzJbzf9z5BXTpkwcBYP6HmfG6BxKRZ5pFA3kh437E8tADeGR4mKBGCwUiSrLYsLooLTemor1oCrFZ"
+    },
+    {
+      "operation": "grant_role:TREASURY_ADMIN",
+      "signature": "3VDxhhdy571vvuJu8KNdKbY3no8nhm34b8pfpAZRyvkdYcQ7YYXmiVNkUufwhjz4K1yP2ZTAek7qxtD5tnkVwk6C"
+    },
+    {
+      "operation": "enable_role:TREASURY_WITHDRAWER",
+      "signature": "djKoKVXFhCQSkrYBdGkurzokPpaGLVMedam3Tw8oguXhHBWf83gUYFhFKESAJA1XNXrfeXCXn6LL24WmEhqPajn"
+    },
+    {
+      "operation": "grant_role:TREASURY_WITHDRAWER",
+      "signature": "3cDfzMdcpWMydgReog7xm1LgkrWbaL1qa7CKdThT8vUPrwZL1GXZMvPDNrJvur2pwj5KCcvFhMm6FRoPawhTxt89"
+    },
+    {
+      "operation": "enable_role:TREASURY_KEEPER",
+      "signature": "4Qb6ZbtSr9nqiGX6hqrBaAVnAK1ictZunyTmhve4E1EtTtYAyHMi81PyxAYa4HctBbZmew4FLQycyyKALEMtqPzU"
+    },
+    {
+      "operation": "grant_role:TREASURY_KEEPER",
+      "signature": "287khepqHmUUDft8kMK9z5P8aJF9RQXNjiLVpDpFrtVj4csdw7DNj6UBFpyj6biAXneXJymJ2J8gcUcHxBFN1oRQ"
+    },
+    {
+      "operation": "enable_role:TIMELOCK_ADMIN",
+      "signature": "59vYwXPKdMPfoGJjKdeWuGTFdEewLZ626doJnJwDiDqYvBAf7XF4trd7heM4VssU7feAeHmhaQ4mqUBAHcW3bKhW"
+    },
+    {
+      "operation": "grant_role:TIMELOCK_ADMIN",
+      "signature": "Y6YbdEQm42aSzjEsgYncUz5CHUL7Wbthw5BPLgKqAuCCKKM2xuQWpEW34gwUGYVpJ5vE7QzSHkmkaDWqAuoUeXo"
+    },
+    {
+      "operation": "enable_role:TIMELOCK_KEEPER",
+      "signature": "57LRmTWrkZpk5gwgpavKCB3u5yytqTjcRbUaMGFFJ9nvTYSQtdxGFmht17kkFWd67T656JRTZ8FX6LMCSc8DNvJR"
+    },
+    {
+      "operation": "grant_role:TIMELOCK_KEEPER",
+      "signature": "38b8THeGyHJkFB2bnZ7WN1zXwQo5P1yw74tfPnjhdembyHeikd71dSzibAv1HQHKyoWvAvh4SGj1W6nAUWQHtVt"
+    },
+    {
+      "operation": "enable_role:__TLD_ADMIN",
+      "signature": "3KrN38HRdNUyPPp1scVR9y3wdZDmvFNZsJCB12rVuPcYX6JL15ZzDDHzn3rp4EsiTFWG1Fb7ehmMzR9NLp6Jx4MD"
+    },
+    {
+      "operation": "grant_role:__TLD_ADMIN",
+      "signature": "5K2qRb5QXgkybbBM3wr8rH2DdubFW9ASYgs58Fz2KC8BbfHo6QfhYsTVvWAC1wr2jBBEtU48UuYHkvATf3L2sjXN"
+    },
+    {
+      "operation": "initialize_mock_verifier",
+      "signature": "3Unw7fYfg6CrZ6YsRATNExWyrrE7vsr71NMsphaUaExJyXfZhq7pxcSmct8HGnw5kBy9EvznTPbR2MQq6fFJPB7C"
+    }
+  ],
+  "verified": true,
+  "verified_slot": 518969999,
+  "verifier": "512YkrQ4qmDjCjAhvCWzazHco5QTJFQguvPMUtAMHM17",
+  "wallet": "J11xHtw4dkogTwexUkWaMH8PyFNGYdJuLg5TNvxeag4Q"
+}
