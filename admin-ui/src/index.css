@@ -29,3 +29,62 @@
     outline-offset: 4px;
   }
 }
+
+/* 钱包组件使用未分层的第三方样式，限定在导航区域内覆盖。 */
+.header-wallet .wallet-adapter-button {
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--color-indigo-600);
+  border-radius: 8px;
+  background: var(--color-indigo-600);
+  color: white;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background-color 150ms, border-color 150ms;
+}
+
+.header-wallet .wallet-adapter-button:not([disabled]):hover {
+  border-color: var(--color-indigo-700);
+  background: var(--color-indigo-700);
+}
+
+.header-wallet .wallet-adapter-button:not([disabled]):focus-visible {
+  outline: 2px solid var(--color-blue-600);
+  outline-offset: 3px;
+}
+
+.header-wallet .wallet-adapter-button-start-icon,
+.header-wallet .wallet-adapter-button-start-icon img {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+}
+
+.header-wallet .wallet-adapter-button-start-icon {
+  margin-right: 8px;
+}
+
+.header-wallet .wallet-adapter-dropdown-list {
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid var(--color-slate-200);
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 10%);
+  font-family: inherit;
+}
+
+.header-wallet .wallet-adapter-dropdown-list-item {
+  height: 32px;
+  padding: 0 12px;
+  color: var(--color-slate-700);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.header-wallet .wallet-adapter-dropdown-list-item:not([disabled]):hover {
+  background: var(--color-slate-100);
+}

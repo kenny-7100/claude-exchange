@@ -19,7 +19,7 @@ export default function App() {
   return (
     <div className="min-h-screen">
       <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-5 px-6 py-4">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-3">
           <Link to="/" className="text-lg font-semibold tracking-tight text-slate-950">
             GMX Solana Lab
           </Link>
@@ -41,8 +41,13 @@ export default function App() {
               </NavLink>
             ))}
           </nav>
-          <span className="rounded border border-emerald-200 bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-800">Devnet</span>
-          <WalletMultiButton className="!h-10 !rounded-md !bg-slate-900 !text-sm hover:!bg-slate-700" />
+          <div className="header-wallet flex items-center gap-2 border-l border-slate-200 pl-4">
+            <span className="inline-flex h-8 items-center gap-1.5 rounded-lg bg-emerald-50 px-2.5 text-xs font-medium text-emerald-700">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
+              Devnet
+            </span>
+            <WalletMultiButton />
+          </div>
           </div>
         </div>
       </header>
