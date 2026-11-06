@@ -19,7 +19,7 @@
 
 - `admin-ui/` 定位为个人学习测试使用的合约管理和调试前端，使用 React、TypeScript、Vite。
 - 用户明确计划通过 UI 创建 pool、创建 market、提交 mock 报价；具体页面、参数和交互流程待后续确定。
-- 当前仅有前端基础项目，尚未接入合约交互；本阶段只记录定位，不实施功能。
+- 应用名称为 GMX Solana Lab，目录保留为 `admin-ui/`。已建立 Home、Market、Pool、Token 四个占位页面；Home 直接加载，其余三个页面懒加载，尚未接入合约交互。
 - 后续接入以现有 devnet 程序、Store 和测试 Token 为基础，复用 `config/`、`tokens/` 中的公开部署信息；交易由连接的钱包签名，前端不得读取或打包本地私钥及含凭据的 CLI RPC 配置。
 - 详细说明见 `admin-ui/README.md`，计划功能不得描述为已实现。
 

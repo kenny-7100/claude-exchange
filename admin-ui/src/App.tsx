@@ -1,122 +1,62 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { lazy, Suspense } from 'react'
+import { Link, NavLink, Route, Routes } from 'react-router-dom'
+import { cn } from './lib/utils'
+import HomePage from './pages/home'
 
-function App() {
-  const [count, setCount] = useState(0)
+const MarketPage = lazy(() => import('./pages/market'))
+const PoolPage = lazy(() => import('./pages/pool'))
+const TokenPage = lazy(() => import('./pages/token'))
 
+const navigation = [
+  { to: '/', label: 'Home' },
+  { to: '/market', label: 'Market' },
+  { to: '/pool', label: 'Pool' },
+  { to: '/token', label: 'Token' },
+]
+
+export default function App() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="min-h-screen">
+      <header className="border-b border-slate-200 bg-white">
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-5 px-6 py-5">
+          <Link to="/" className="text-lg font-semibold tracking-tight text-slate-950">
+            GMX Solana Lab
+          </Link>
+          <nav aria-label="主导航" className="flex flex-wrap gap-2">
+            {navigation.map(({ to, label }) => (
+              <NavLink
+                key={to}
+                to={to}
+                end
+                className={({ isActive }) => cn(
+                  'rounded-lg px-4 py-2 text-sm font-medium transition-colors',
+                  isActive
+                    ? 'bg-slate-900 text-white'
+                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-950',
+                )}
+              >
+                {label}
+              </NavLink>
+            ))}
+          </nav>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      </header>
+      <main className="mx-auto max-w-5xl px-6 py-12">
+        <Suspense fallback={<p role="status">正在加载页面…</p>}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/market" element={<MarketPage />} />
+            <Route path="/pool" element={<PoolPage />} />
+            <Route path="/token" element={<TokenPage />} />
+            <Route path="*" element={
+              <section className="space-y-4">
+                <h1>页面不存在</h1>
+                <p>请通过上方导航选择页面，或<Link to="/" className="underline">返回 Home</Link>。</p>
+              </section>
+            } />
+          </Routes>
+        </Suspense>
+      </main>
+    </div>
   )
 }
-
-export default App
