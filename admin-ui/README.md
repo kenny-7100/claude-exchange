@@ -96,3 +96,11 @@ Vite 示例页面、图片和样式已清理。全局基础样式放入 `base` C
 页面分别位于 `src/pages/home/index.tsx`、`src/pages/market/index.tsx`、`src/pages/pool/index.tsx`、`src/pages/token/index.tsx`，每个页面使用独立子目录，入口文件统一命名为 `index.tsx`。Home 静态导入，其他三个页面通过 `React.lazy` 动态导入，配合 `Suspense` 按需加载。生产静态托管需将页面路径回退到 `index.html`，确保直接打开或刷新子页面可以正常访问。
 
 以上钱包、RPC、表单依赖目前仅完成安装，尚未挂载 Provider、配置 RPC endpoint 或实现链上调用。后续接入需验证实际浏览器中的交易编码与钱包签名；安装依赖和通过构建不代表链上流程已验证。全局状态库、完整组件库和 metadata 写入工具按页面需求另行评估。
+
+## 本地 RPC 配置
+
+前端通过 `VITE_SOLANA_RPC_URL` 指定 RPC，未配置时使用公共 devnet RPC。本机已将 Solana CLI 当前配置的 RPC URL 写入 `admin-ui/.env.local`，浏览器直接连接该地址，不通过本地代理或在运行时访问 CLI。
+
+`.env.local` 被 Git 忽略。修改配置后需要重启 Vite；CLI 的 RPC 地址以后变化时，需同步更新此文件。该变量会进入浏览器代码，若 URL 含 API key，访问页面的用户可以看到该 key；不要发布含私人凭据的构建产物。前端不会读取 CLI 钱包私钥。
+
+WebSocket 通过 `VITE_SOLANA_WS_URL` 显式配置，本机已将 CLI 的 WebSocket URL 写入同一 `.env.local`。交易确认时，web3.js 使用该地址订阅签名状态；Token 余额目前通过 HTTP RPC 查询和手动刷新，未订阅余额变化。不配置此变量时，web3.js 会从 HTTP RPC 地址自动推导 WebSocket 地址。HTTP 和 WebSocket 必须指向同一网络，修改后需重启 Vite。WebSocket URL 同样会在浏览器中可见。
