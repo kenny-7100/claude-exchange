@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Link, NavLink, Route, Routes } from 'react-router-dom'
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { cn } from './lib/utils'
 import HomePage from './pages/home'
 
@@ -18,10 +19,11 @@ export default function App() {
   return (
     <div className="min-h-screen">
       <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-5 px-6 py-5">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-5 px-6 py-4">
           <Link to="/" className="text-lg font-semibold tracking-tight text-slate-950">
             GMX Solana Lab
           </Link>
+          <div className="flex flex-wrap items-center gap-4">
           <nav aria-label="主导航" className="flex flex-wrap gap-2">
             {navigation.map(({ to, label }) => (
               <NavLink
@@ -39,9 +41,12 @@ export default function App() {
               </NavLink>
             ))}
           </nav>
+          <span className="rounded border border-emerald-200 bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-800">Devnet</span>
+          <WalletMultiButton className="!h-10 !rounded-md !bg-slate-900 !text-sm hover:!bg-slate-700" />
+          </div>
         </div>
       </header>
-      <main className="mx-auto max-w-5xl px-6 py-12">
+      <main className="mx-auto max-w-6xl px-6 py-10">
         <Suspense fallback={<p role="status">正在加载页面…</p>}>
           <Routes>
             <Route path="/" element={<HomePage />} />
