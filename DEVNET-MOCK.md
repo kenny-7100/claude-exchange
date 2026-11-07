@@ -53,8 +53,8 @@ npm run tokens:verify
 
 ## 尚未完成的范围
 
-市场、Token Map、oracle/price-feed 和其他后续业务账户尚未初始化，尚未提交 mock 报价或交易业务请求。GT Incentive 仍为现有的仅包含初始化逻辑的程序。
+市场、Token Map、oracle/price-feed 和其他后续业务账户尚未初始化，尚未发送真实 mock 报价或交易业务请求；已通过无签名模拟验证 Mock 报价账户创建、价格写入及再次更新。GT Incentive 仍为现有的仅包含初始化逻辑的程序。
 
-默认 Store PDA 同时记录在部署清单中。Mock 报价使用 `ChainlinkDataStreams` provider，仍要求正确的 keeper/authority、匹配的 feed ID、有效的价格范围和新鲜时间戳。启用 `mock` 的 Store 也继续接受真实 Chainlink verifier。Mock 报价生成和提交工具仍待实现。
+默认 Store PDA 同时记录在部署清单中。Mock 报价使用 `ChainlinkDataStreams` provider，仍要求正确的 keeper/authority、匹配的 feed ID、有效的价格范围和新鲜时间戳。启用 `mock` 的 Store 也继续接受真实 Chainlink verifier。管理前端 Token 页面已实现 Mock 报告生成与钱包签名提交；固定来源配置见 `config/devnet-mock-price-feeds.json`。可运行 `npm run mock-prices:check` 做无签名链上模拟，不发送交易。
 
 当前工作流只在本地生成 IDL；发布到链上 IDL 账户需要单独执行。

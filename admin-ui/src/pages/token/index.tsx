@@ -4,6 +4,9 @@ import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { Check, ExternalLink, LoaderCircle, Plus, RefreshCw, X } from 'lucide-react'
 import { PublicKey, Transaction } from '@solana/web3.js'
 import { supportedTokens, type SupportedToken } from '../../lib/tokens'
+import { useQuery } from '@tanstack/react-query'
+import { mockAuthority, readMockPrices, refreshHintSeconds } from '../../lib/mock-prices'
+import MockQuoteDialog from './MockQuoteDialog'
 
 type TokenBalance = { amount: bigint; exists: boolean }
 
@@ -36,7 +39,20 @@ export default function TokenPage() {
   const [amount, setAmount] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
-  const [notice, setNotice] = useState<{ symbol: string; signature: string } | null>(null)
+  const [notice, setNotice] = useState<{ symbol: string; signature: string; action?: string } | null>(null)
+  const [quoteToken, setQuoteToken] = useState<SupportedToken | null>(null)
+  const [now, setNow] = useState(() => Date.now())
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(Date.now()), 30_000)
+    return () => window.clearInterval(timer)
+  }, [])
+  const quotes = useQuery({
+    queryKey: ['mock-prices', connection.rpcEndpoint],
+    queryFn: () => readMockPrices(connection, supportedTokens.map((token) => token.mint)),
+    refetchInterval: 30_000,
+    retry: false,
+  })
+  const canQuote = !!publicKey?.equals(mockAuthority)
 
   const canMint = useMemo(() => publicKey && supportedTokens.some((token) => token.mintAuthority === publicKey.toBase58()), [publicKey])
 
@@ -115,7 +131,8 @@ export default function TokenPage() {
       if (!destinationInfo) transaction.add(createAssociatedTokenAccountInstruction(publicKey, destination, publicKey, mint))
       transaction.add(createMintToInstruction(mint, destination, publicKey, rawAmount))
       const signature = await sendTransaction(transaction, connection)
-      await connection.confirmTransaction(signature, 'confirmed')
+      const confirmation = await connection.confirmTransaction(signature, 'confirmed')
+      if (confirmation.value.err) throw new Error(`增发交易执行失败：${JSON.stringify(confirmation.value.err)}`)
       setNotice({ symbol: selected.symbol, signature })
       setSelected(null)
       setAmount('')
@@ -134,36 +151,43 @@ export default function TokenPage() {
           <p className="text-sm font-medium text-emerald-700">DEVNET ASSETS</p>
           <h1 className="mt-1">Token 管理</h1>
         </div>
-        <button type="button" onClick={() => void refreshBalances()} disabled={!publicKey || loading} title="刷新余额" className="inline-flex h-10 items-center gap-2 rounded-md border border-slate-300 bg-white px-3 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50">
-          <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />刷新余额
+        <button type="button" onClick={() => { void refreshBalances(); void quotes.refetch() }} disabled={loading || quotes.isFetching} title="刷新余额和报价" className="inline-flex h-10 items-center gap-2 rounded-md border border-slate-300 bg-white px-3 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50">
+          <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />刷新数据
         </button>
       </div>
 
-      {!connected && <div className="border-l-4 border-amber-500 bg-amber-50 px-4 py-3 text-sm text-amber-900">连接管理员钱包后可查看余额并增发 Token。</div>}
+      {!connected && <div className="border-l-4 border-amber-500 bg-amber-50 px-4 py-3 text-sm text-amber-900">连接钱包后可查看余额；管理员钱包可增发 Token 和提交 Mock 报价。</div>}
       {connected && !canMint && <div className="border-l-4 border-amber-500 bg-amber-50 px-4 py-3 text-sm text-amber-900">当前钱包没有这 9 个测试 Token 的增发权限。请连接管理员钱包 {shortKey(supportedTokens[0].mintAuthority)}。</div>}
       {error && !selected && <div role="alert" className="border-l-4 border-red-600 bg-red-50 px-4 py-3 text-sm text-red-800">{error}</div>}
-      {notice && <div className="flex flex-wrap items-center gap-2 border-l-4 border-emerald-600 bg-emerald-50 px-4 py-3 text-sm text-emerald-900"><Check size={16} />{notice.symbol} 增发成功，<a className="inline-flex items-center gap-1 underline" href={`https://explorer.solana.com/tx/${notice.signature}?cluster=devnet`} target="_blank" rel="noreferrer">查看交易<ExternalLink size={13} /></a></div>}
+      {notice && <div className="flex flex-wrap items-center gap-2 border-l-4 border-emerald-600 bg-emerald-50 px-4 py-3 text-sm text-emerald-900"><Check size={16} />{notice.symbol} {notice.action ?? '增发'}成功，<a className="inline-flex items-center gap-1 underline" href={`https://explorer.solana.com/tx/${notice.signature}?cluster=devnet`} target="_blank" rel="noreferrer">查看交易<ExternalLink size={13} /></a></div>}
 
+      {quotes.isError && <p role="alert" className="text-sm text-red-700">Mock 价格读取失败：{quotes.error.message}</p>}
       <div className="overflow-x-auto border-y border-slate-200 bg-white">
-        <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+        <table className="w-full min-w-[1000px] border-collapse text-left text-sm">
           <thead className="bg-slate-50 text-xs uppercase text-slate-500">
-            <tr><th className="px-4 py-3 font-medium">资产</th><th className="px-4 py-3 font-medium">Mint 地址</th><th className="px-4 py-3 font-medium">精度</th><th className="px-4 py-3 text-right font-medium">当前钱包余额</th><th className="px-4 py-3 text-right font-medium">操作</th></tr>
+            <tr><th className="px-4 py-3 font-medium">资产</th><th className="px-4 py-3 font-medium">Mint 地址</th><th className="px-4 py-3 font-medium">精度</th><th className="px-4 py-3 text-right font-medium">Mock 价格（USD）</th><th className="px-4 py-3 text-right font-medium">当前钱包余额</th><th className="px-4 py-3 text-right font-medium">操作</th></tr>
           </thead>
           <tbody className="divide-y divide-slate-100">
             {supportedTokens.map((token) => {
               const balance = balances[token.mint]
+              const quote = quotes.data?.[token.mint]
+              const stale = !!quote?.timestamp && now / 1000 - quote.timestamp > refreshHintSeconds
               return <tr key={token.mint} className="hover:bg-slate-50/70">
                 <td className="px-4 py-3"><div className="flex items-center gap-3"><img src={token.image} alt="" className="h-9 w-9 shrink-0 rounded-full object-cover" /><div><div className="font-semibold text-slate-900">{token.symbol}</div><div className="text-xs text-slate-500">{token.name}</div></div></div></td>
                 <td className="px-4 py-3 font-mono text-xs text-slate-600" title={token.mint}>{shortKey(token.mint)}</td>
                 <td className="px-4 py-3 text-slate-600">{token.decimals}</td>
+                <td className="px-4 py-3 text-right" title={quote ? `Mock 报价账户：${quote.address}` : undefined}>
+                  {quotes.isError ? <><span className="text-red-700">读取失败</span><button type="button" onClick={() => void quotes.refetch()} className="ml-2 text-xs text-indigo-600 underline">重试</button>{quote?.price && <div className="mt-1 text-xs text-slate-400">上次读取：${quote.price}</div>}</> : !quote ? <span className="text-slate-400">加载中…</span> : quote.price === null ? <><span className="text-slate-400">—</span><div className="mt-1 text-xs text-slate-400">尚未报价</div></> : <><div className="font-mono tabular-nums text-slate-900">${quote.price}</div><div className={stale ? 'mt-1 text-xs text-amber-700' : 'mt-1 text-xs text-slate-500'}>{new Date(quote.timestamp * 1000).toLocaleString('zh-CN')}{stale && ' · 建议刷新'}</div></>}
+                </td>
                 <td className="px-4 py-3 text-right font-mono tabular-nums text-slate-800">{publicKey ? (loading && !balance ? '…' : balance ? formatAmount(balance.amount, token.decimals) : '—') : '连接钱包'}</td>
-                <td className="px-4 py-3 text-right"><button type="button" onClick={() => { setSelected(token); setAmount(''); setError('') }} disabled={!canMint || submitting} className="inline-flex h-9 items-center gap-1.5 rounded-md bg-slate-900 px-3 text-sm font-medium text-white hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-40"><Plus size={15} />增发</button></td>
+                <td className="px-4 py-3 text-right"><div className="flex justify-end gap-2"><button type="button" onClick={() => { setQuoteToken(token); setNotice(null) }} disabled={!canQuote || submitting} title={canQuote ? '设置 USD 测试价格' : '请连接项目管理员钱包'} className="inline-flex h-9 items-center rounded-md border border-indigo-200 bg-indigo-50 px-3 text-sm font-medium text-indigo-700 hover:bg-indigo-100 disabled:cursor-not-allowed disabled:opacity-40">Mock 报价</button><button type="button" onClick={() => { setSelected(token); setAmount(''); setError('') }} disabled={!canMint || submitting} className="inline-flex h-9 items-center gap-1.5 rounded-md bg-slate-900 px-3 text-sm font-medium text-white hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-40"><Plus size={15} />增发</button></div></td>
               </tr>
             })}
           </tbody>
         </table>
       </div>
 
+      {quoteToken && <MockQuoteDialog key={quoteToken.mint} token={quoteToken} onClose={() => setQuoteToken(null)} onSuccess={(signature) => { setNotice({ symbol: quoteToken.symbol, signature, action: 'Mock 报价更新' }); setQuoteToken(null) }} />}
       {selected && <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/40 p-4" onMouseDown={(event) => { if (event.target === event.currentTarget && !submitting) setSelected(null) }}>
         <section role="dialog" aria-modal="true" aria-labelledby="mint-title" className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
           <div className="flex items-start justify-between gap-4"><div><h2 id="mint-title" className="text-lg font-semibold text-slate-950">增发 {selected.symbol}</h2><p className="mt-1 text-sm text-slate-500">数量将发送至当前连接钱包。</p></div><button type="button" title="关闭" onClick={() => setSelected(null)} disabled={submitting} className="rounded p-1 text-slate-500 hover:bg-slate-100"><X size={18} /></button></div>

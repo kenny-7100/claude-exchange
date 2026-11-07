@@ -1,0 +1,1749 @@
+{
+  "address": "14tZjpdcT58u8UUe7CXKK6NRRFi4Bhkvo6bBDJYmT8Jt",
+  "metadata": {
+    "name": "gmsol_store",
+    "version": "0.12.0",
+    "spec": "0.1.0",
+    "description": "GMX-Solana is an extension of GMX on the Solana blockchain.",
+    "repository": "https://github.com/gmsol-labs/gmx-solana"
+  },
+  "instructions": [
+    {
+      "name": "initialize_price_feed",
+      "discriminator": [
+        68,
+        180,
+        81,
+        20,
+        102,
+        213,
+        145,
+        233
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "store"
+        },
+        {
+          "name": "price_feed",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "index",
+          "type": "u16"
+        },
+        {
+          "name": "provider",
+          "type": "u8"
+        },
+        {
+          "name": "token",
+          "type": "pubkey"
+        },
+        {
+          "name": "feed_id",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "update_price_feed_with_chainlink",
+      "discriminator": [
+        204,
+        69,
+        132,
+        33,
+        153,
+        43,
+        6,
+        148
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true,
+          "relations": [
+            "price_feed"
+          ]
+        },
+        {
+          "name": "store",
+          "relations": [
+            "price_feed"
+          ]
+        },
+        {
+          "name": "verifier_account"
+        },
+        {
+          "name": "access_controller"
+        },
+        {
+          "name": "config_account"
+        },
+        {
+          "name": "price_feed",
+          "writable": true
+        },
+        {
+          "name": "chainlink"
+        }
+      ],
+      "args": [
+        {
+          "name": "compressed_report",
+          "type": "bytes"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "PriceFeed",
+      "discriminator": [
+        189,
+        103,
+        252,
+        23,
+        152,
+        35,
+        243,
+        156
+      ]
+    },
+    {
+      "name": "Store",
+      "discriminator": [
+        130,
+        48,
+        247,
+        244,
+        182,
+        191,
+        30,
+        26
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "Addresses",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "holding",
+            "type": "pubkey"
+          },
+          {
+            "name": "reserved",
+            "type": {
+              "array": [
+                "pubkey",
+                30
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Amounts",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "claimable_time_window",
+            "type": "u64"
+          },
+          {
+            "name": "recent_time_window",
+            "type": "u64"
+          },
+          {
+            "name": "request_expiration",
+            "type": "u64"
+          },
+          {
+            "name": "oracle_max_age",
+            "type": "u64"
+          },
+          {
+            "name": "oracle_max_timestamp_range",
+            "type": "u64"
+          },
+          {
+            "name": "oracle_max_future_timestamp_excess",
+            "type": "u64"
+          },
+          {
+            "name": "adl_prices_max_staleness",
+            "type": "u64"
+          },
+          {
+            "name": "min_position_age_for_manual_close",
+            "type": "u64"
+          },
+          {
+            "name": "market_closed_prices_max_staleness",
+            "type": "u64"
+          },
+          {
+            "name": "reserved",
+            "type": {
+              "array": [
+                "u64",
+                124
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "DisabledFeatures",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "map",
+            "type": {
+              "defined": {
+                "name": "DisabledMap"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "DisabledMap",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "data",
+            "type": {
+              "array": [
+                {
+                  "defined": {
+                    "name": "DisabledMapEntry"
+                  }
+                },
+                64
+              ]
+            }
+          },
+          {
+            "name": "padding",
+            "type": {
+              "array": [
+                "u8",
+                0
+              ]
+            }
+          },
+          {
+            "name": "count",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DisabledMapEntry",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "key",
+            "type": {
+              "array": [
+                "u8",
+                2
+              ]
+            }
+          },
+          {
+            "name": "value",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Factors",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "oracle_ref_price_deviation",
+            "type": "u128"
+          },
+          {
+            "name": "order_fee_discount_for_referred_user",
+            "type": "u128"
+          },
+          {
+            "name": "max_builder_fee_factor",
+            "type": "u128"
+          },
+          {
+            "name": "reserved",
+            "type": {
+              "array": [
+                "u128",
+                63
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "GtState",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "decimals",
+            "type": "u8"
+          },
+          {
+            "name": "padding_0",
+            "type": {
+              "array": [
+                "u8",
+                7
+              ]
+            }
+          },
+          {
+            "name": "last_minted_at",
+            "type": "i64"
+          },
+          {
+            "name": "total_minted",
+            "type": "u64"
+          },
+          {
+            "name": "grow_step_amount",
+            "type": "u64"
+          },
+          {
+            "name": "grow_steps",
+            "type": "u64"
+          },
+          {
+            "name": "supply",
+            "type": "u64"
+          },
+          {
+            "name": "last_cumulative_inv_cost_factor_ts",
+            "type": "i64"
+          },
+          {
+            "name": "gt_vault",
+            "type": "u64"
+          },
+          {
+            "name": "cumulative_inv_cost_factor",
+            "type": "u128"
+          },
+          {
+            "name": "minting_cost_grow_factor",
+            "type": "u128"
+          },
+          {
+            "name": "minting_cost",
+            "type": "u128"
+          },
+          {
+            "name": "padding_3",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "exchange_time_window",
+            "type": "u32"
+          },
+          {
+            "name": "padding_4",
+            "type": {
+              "array": [
+                "u8",
+                12
+              ]
+            }
+          },
+          {
+            "name": "max_rank",
+            "type": "u64"
+          },
+          {
+            "name": "ranks",
+            "type": {
+              "array": [
+                "u64",
+                15
+              ]
+            }
+          },
+          {
+            "name": "order_fee_discount_factors",
+            "type": {
+              "array": [
+                "u128",
+                16
+              ]
+            }
+          },
+          {
+            "name": "referral_reward_factors",
+            "type": {
+              "array": [
+                "u128",
+                16
+              ]
+            }
+          },
+          {
+            "name": "padding_5",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "reserved",
+            "type": {
+              "array": [
+                "u8",
+                256
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "MarketConfigFactorContainer",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "value",
+            "type": "u128"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MarketConfigFlagContainer",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "value",
+            "type": "u128"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MarketConfigPermissions",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "updatable_market_config_flags",
+            "type": {
+              "defined": {
+                "name": "MarketConfigFlagContainer"
+              }
+            }
+          },
+          {
+            "name": "updatable_market_config_factors",
+            "type": {
+              "defined": {
+                "name": "MarketConfigFactorContainer"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Members",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "data",
+            "type": {
+              "array": [
+                {
+                  "defined": {
+                    "name": "MembersEntry"
+                  }
+                },
+                64
+              ]
+            }
+          },
+          {
+            "name": "padding",
+            "type": {
+              "array": [
+                "u8",
+                0
+              ]
+            }
+          },
+          {
+            "name": "count",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MembersEntry",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "key",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "value",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PriceFeed",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "provider",
+            "type": "u8"
+          },
+          {
+            "name": "index",
+            "type": "u16"
+          },
+          {
+            "name": "padding_0",
+            "type": {
+              "array": [
+                "u8",
+                12
+              ]
+            }
+          },
+          {
+            "name": "store",
+            "type": "pubkey"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "token",
+            "type": "pubkey"
+          },
+          {
+            "name": "feed_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "last_published_at_slot",
+            "type": "u64"
+          },
+          {
+            "name": "last_published_at",
+            "type": "i64"
+          },
+          {
+            "name": "price",
+            "type": {
+              "defined": {
+                "name": "PriceFeedPrice"
+              }
+            }
+          },
+          {
+            "name": "reserved",
+            "type": {
+              "array": [
+                "u8",
+                256
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "PriceFeedPrice",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "decimals",
+            "type": "u8"
+          },
+          {
+            "name": "flags",
+            "type": {
+              "defined": {
+                "name": "PriceFlagContainer"
+              }
+            }
+          },
+          {
+            "name": "market_status_value",
+            "type": "u8"
+          },
+          {
+            "name": "padding",
+            "type": {
+              "array": [
+                "u8",
+                1
+              ]
+            }
+          },
+          {
+            "name": "last_update_diff",
+            "type": "u32"
+          },
+          {
+            "name": "ts",
+            "type": "i64"
+          },
+          {
+            "name": "price",
+            "type": "u128"
+          },
+          {
+            "name": "min_price",
+            "type": "u128"
+          },
+          {
+            "name": "max_price",
+            "type": "u128"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PriceFlagContainer",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "value",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RoleMap",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "data",
+            "type": {
+              "array": [
+                {
+                  "defined": {
+                    "name": "RoleMapEntry"
+                  }
+                },
+                32
+              ]
+            }
+          },
+          {
+            "name": "padding",
+            "type": {
+              "array": [
+                "u8",
+                0
+              ]
+            }
+          },
+          {
+            "name": "count",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RoleMapEntry",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "key",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "defined": {
+                "name": "RoleMetadata"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "RoleMetadata",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "enabled",
+            "type": "u8"
+          },
+          {
+            "name": "index",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RoleStore",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "roles",
+            "type": {
+              "defined": {
+                "name": "RoleMap"
+              }
+            }
+          },
+          {
+            "name": "members",
+            "type": {
+              "defined": {
+                "name": "Members"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Store",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "version",
+            "type": "u8"
+          },
+          {
+            "name": "bump",
+            "type": {
+              "array": [
+                "u8",
+                1
+              ]
+            }
+          },
+          {
+            "name": "key_seed",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "key",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "padding_0",
+            "type": {
+              "array": [
+                "u8",
+                6
+              ]
+            }
+          },
+          {
+            "name": "role",
+            "type": {
+              "defined": {
+                "name": "RoleStore"
+              }
+            }
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "next_authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_map",
+            "type": "pubkey"
+          },
+          {
+            "name": "disabled_features",
+            "type": {
+              "defined": {
+                "name": "DisabledFeatures"
+              }
+            }
+          },
+          {
+            "name": "padding_1",
+            "type": {
+              "array": [
+                "u8",
+                4
+              ]
+            }
+          },
+          {
+            "name": "last_restarted_slot",
+            "type": "u64"
+          },
+          {
+            "name": "treasury",
+            "type": {
+              "defined": {
+                "name": "Treasury"
+              }
+            }
+          },
+          {
+            "name": "amount",
+            "type": {
+              "defined": {
+                "name": "Amounts"
+              }
+            }
+          },
+          {
+            "name": "padding_2",
+            "type": {
+              "array": [
+                "u8",
+                8
+              ]
+            }
+          },
+          {
+            "name": "factor",
+            "type": {
+              "defined": {
+                "name": "Factors"
+              }
+            }
+          },
+          {
+            "name": "address",
+            "type": {
+              "defined": {
+                "name": "Addresses"
+              }
+            }
+          },
+          {
+            "name": "gt",
+            "type": {
+              "defined": {
+                "name": "GtState"
+              }
+            }
+          },
+          {
+            "name": "market_config_permissions",
+            "type": {
+              "defined": {
+                "name": "MarketConfigPermissions"
+              }
+            }
+          },
+          {
+            "name": "reserved",
+            "type": {
+              "array": [
+                "u8",
+                992
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Treasury",
+      "serialization": "bytemuck",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "receiver",
+            "type": "pubkey"
+          },
+          {
+            "name": "next_receiver",
+            "type": "pubkey"
+          },
+          {
+            "name": "reserved",
+            "type": {
+              "array": [
+                "u8",
+                128
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "NonDefaultStore",
+      "msg": "non-default store is not allowed"
+    },
+    {
+      "code": 6001,
+      "name": "Internal",
+      "msg": "internal error"
+    },
+    {
+      "code": 6002,
+      "name": "Unimplemented",
+      "msg": "unimplemented"
+    },
+    {
+      "code": 6003,
+      "name": "NotAnAdmin",
+      "msg": "not an admin"
+    },
+    {
+      "code": 6004,
+      "name": "PermissionDenied",
+      "msg": "permission denied"
+    },
+    {
+      "code": 6005,
+      "name": "FeatureDisabled",
+      "msg": "feature disabled"
+    },
+    {
+      "code": 6006,
+      "name": "Model",
+      "msg": "model"
+    },
+    {
+      "code": 6007,
+      "name": "InvalidArgument",
+      "msg": "invalid argument"
+    },
+    {
+      "code": 6008,
+      "name": "PreconditionsAreNotMet",
+      "msg": "preconditions are not met"
+    },
+    {
+      "code": 6009,
+      "name": "NotFound",
+      "msg": "not found"
+    },
+    {
+      "code": 6010,
+      "name": "ExceedMaxLengthLimit",
+      "msg": "exceed max length limit"
+    },
+    {
+      "code": 6011,
+      "name": "NotEnoughSpace",
+      "msg": "not enough space"
+    },
+    {
+      "code": 6012,
+      "name": "TokenAmountOverflow",
+      "msg": "token amount overflow"
+    },
+    {
+      "code": 6013,
+      "name": "ValueOverflow",
+      "msg": "value overflow"
+    },
+    {
+      "code": 6014,
+      "name": "UnknownActionState",
+      "msg": "unknown action state"
+    },
+    {
+      "code": 6015,
+      "name": "LoadAccountError",
+      "msg": "load zero-copy account error"
+    },
+    {
+      "code": 6016,
+      "name": "TokenAccountNotProvided",
+      "msg": "required token account is not provided"
+    },
+    {
+      "code": 6017,
+      "name": "TokenMintNotProvided",
+      "msg": "required token mint is not provided"
+    },
+    {
+      "code": 6018,
+      "name": "TokenDecimalsMismatched",
+      "msg": "token decimals mismatched"
+    },
+    {
+      "code": 6019,
+      "name": "MarketAccountIsNotProvided",
+      "msg": "market account is not provided"
+    },
+    {
+      "code": 6020,
+      "name": "StoreMismatched",
+      "msg": "store mismatched"
+    },
+    {
+      "code": 6021,
+      "name": "OwnerMismatched",
+      "msg": "owner mismatched"
+    },
+    {
+      "code": 6022,
+      "name": "ReceiverMismatched",
+      "msg": "receiver mismatched"
+    },
+    {
+      "code": 6023,
+      "name": "RentReceiverMismatched",
+      "msg": "rent receiver mismatched"
+    },
+    {
+      "code": 6024,
+      "name": "MarketMismatched",
+      "msg": "market mismatched"
+    },
+    {
+      "code": 6025,
+      "name": "MarketTokenMintMismatched",
+      "msg": "market token mint mismatched"
+    },
+    {
+      "code": 6026,
+      "name": "MintAccountNotProvided",
+      "msg": "mint account not provided"
+    },
+    {
+      "code": 6027,
+      "name": "MarketTokenAccountMismatched",
+      "msg": "market token account mismatched"
+    },
+    {
+      "code": 6028,
+      "name": "TokenMintMismatched",
+      "msg": "token mint mismatched"
+    },
+    {
+      "code": 6029,
+      "name": "TokenAccountMismatched",
+      "msg": "token account mismatched"
+    },
+    {
+      "code": 6030,
+      "name": "NotAnATA",
+      "msg": "not an ATA for the given token"
+    },
+    {
+      "code": 6031,
+      "name": "NotEnoughTokenAmount",
+      "msg": "not enough token amount"
+    },
+    {
+      "code": 6032,
+      "name": "TokenAmountExceedsLimit",
+      "msg": "token amount exceeds limit"
+    },
+    {
+      "code": 6033,
+      "name": "UnknownToken",
+      "msg": "unknown token"
+    },
+    {
+      "code": 6034,
+      "name": "NotEnoughExecutionFee",
+      "msg": "not enough execution fee"
+    },
+    {
+      "code": 6035,
+      "name": "InvalidSwapPathLength",
+      "msg": "invalid swap path length"
+    },
+    {
+      "code": 6036,
+      "name": "NotEnoughSwapMarkets",
+      "msg": "not enough swap markets in the path"
+    },
+    {
+      "code": 6037,
+      "name": "InvalidSwapPath",
+      "msg": "invalid swap path"
+    },
+    {
+      "code": 6038,
+      "name": "InsufficientOutputAmount",
+      "msg": "insufficient output amounts"
+    },
+    {
+      "code": 6039,
+      "name": "StoreOutdated",
+      "msg": "store outdated"
+    },
+    {
+      "code": 6040,
+      "name": "InvalidStoreConfigKey",
+      "msg": "invalid store config key"
+    },
+    {
+      "code": 6041,
+      "name": "InvalidProviderKindIndex",
+      "msg": "invalid provider kind index"
+    },
+    {
+      "code": 6042,
+      "name": "ChainlinkProgramIsRequired",
+      "msg": "chainlink program is required"
+    },
+    {
+      "code": 6043,
+      "name": "NotSupportedCustomPriceProvider",
+      "msg": "this price provider is not supported to be used with custom price feed"
+    },
+    {
+      "code": 6044,
+      "name": "NotEnoughTokenFeeds",
+      "msg": "not enough token feeds"
+    },
+    {
+      "code": 6045,
+      "name": "OracleTimestampsAreLargerThanRequired",
+      "msg": "oracle timestamps are larger than required"
+    },
+    {
+      "code": 6046,
+      "name": "OracleTimestampsAreSmallerThanRequired",
+      "msg": "oracle timestamps are smaller than required"
+    },
+    {
+      "code": 6047,
+      "name": "InvalidOracleTimestampsRange",
+      "msg": "invalid oracle timestamps range"
+    },
+    {
+      "code": 6048,
+      "name": "MaxOracleTimestampsRangeExceeded",
+      "msg": "max oracle timestamps range exceeded"
+    },
+    {
+      "code": 6049,
+      "name": "OracleNotUpdated",
+      "msg": "oracle not updated"
+    },
+    {
+      "code": 6050,
+      "name": "MaxPriceAgeExceeded",
+      "msg": "max price age exceeded"
+    },
+    {
+      "code": 6051,
+      "name": "MaxPriceTimestampExceeded",
+      "msg": "max price timestamp exceeded"
+    },
+    {
+      "code": 6052,
+      "name": "NegativePriceIsNotSupported",
+      "msg": "negative price is not supported"
+    },
+    {
+      "code": 6053,
+      "name": "InvalidOracleSlot",
+      "msg": "invalid oracle slot"
+    },
+    {
+      "code": 6054,
+      "name": "MissingOraclePrice",
+      "msg": "missing oracle price"
+    },
+    {
+      "code": 6055,
+      "name": "InvalidPriceFeedPrice",
+      "msg": "invalid price feed price"
+    },
+    {
+      "code": 6056,
+      "name": "PriceOverflow",
+      "msg": "price overflow"
+    },
+    {
+      "code": 6057,
+      "name": "InvalidPriceFeedAccount",
+      "msg": "invalid price feed account"
+    },
+    {
+      "code": 6058,
+      "name": "PriceFeedNotUpdated",
+      "msg": "price feed is not updated"
+    },
+    {
+      "code": 6059,
+      "name": "PricesAreAlreadySet",
+      "msg": "prices are already set"
+    },
+    {
+      "code": 6060,
+      "name": "PriceIsAlreadySet",
+      "msg": "price is already set"
+    },
+    {
+      "code": 6061,
+      "name": "TokenConfigDisabled",
+      "msg": "token config is disabled"
+    },
+    {
+      "code": 6062,
+      "name": "SyntheticTokenPriceIsNotAllowed",
+      "msg": "synthetic token price is not allowed"
+    },
+    {
+      "code": 6063,
+      "name": "InvalidPriceReport",
+      "msg": "invalid price report"
+    },
+    {
+      "code": 6064,
+      "name": "MarketNotOpen",
+      "msg": "market is not open"
+    },
+    {
+      "code": 6065,
+      "name": "EmptyDeposit",
+      "msg": "empty deposit"
+    },
+    {
+      "code": 6066,
+      "name": "InvalidReceiverForFirstDeposit",
+      "msg": "invalid owner for the first deposit"
+    },
+    {
+      "code": 6067,
+      "name": "NotEnoughMarketTokenAmountForFirstDeposit",
+      "msg": "not enough market token amount for the first deposit"
+    },
+    {
+      "code": 6068,
+      "name": "NotEnoughGlvTokenAmountForFirstDeposit",
+      "msg": "not enough GLV token amount for the first deposit"
+    },
+    {
+      "code": 6069,
+      "name": "EmptyWithdrawal",
+      "msg": "empty withdrawal"
+    },
+    {
+      "code": 6070,
+      "name": "EmptyOrder",
+      "msg": "empty order"
+    },
+    {
+      "code": 6071,
+      "name": "InvalidMinOutputAmount",
+      "msg": "invalid min output amount for limit swap order"
+    },
+    {
+      "code": 6072,
+      "name": "InvalidTriggerPrice",
+      "msg": "invalid trigger price"
+    },
+    {
+      "code": 6073,
+      "name": "InvalidPosition",
+      "msg": "invalid position"
+    },
+    {
+      "code": 6074,
+      "name": "InvalidPositionKind",
+      "msg": "invalid position kind"
+    },
+    {
+      "code": 6075,
+      "name": "PositionMismatched",
+      "msg": "position mismatched"
+    },
+    {
+      "code": 6076,
+      "name": "PositionItNotRequired",
+      "msg": "position is not required"
+    },
+    {
+      "code": 6077,
+      "name": "PositionIsRequired",
+      "msg": "position is required"
+    },
+    {
+      "code": 6078,
+      "name": "OrderKindNotAllowed",
+      "msg": "the order kind is not allowed by this instruction"
+    },
+    {
+      "code": 6079,
+      "name": "UnknownOrderKind",
+      "msg": "unknown order kind"
+    },
+    {
+      "code": 6080,
+      "name": "UnknownOrderSide",
+      "msg": "unknown order side"
+    },
+    {
+      "code": 6081,
+      "name": "UnknownDecreasePositionSwapType",
+      "msg": "unknown decrease position swap type"
+    },
+    {
+      "code": 6082,
+      "name": "MissingInitialCollateralToken",
+      "msg": "missing initial collateral token"
+    },
+    {
+      "code": 6083,
+      "name": "MissingFinalOutputToken",
+      "msg": "missing final output token"
+    },
+    {
+      "code": 6084,
+      "name": "MissingPoolTokens",
+      "msg": "missing pool tokens"
+    },
+    {
+      "code": 6085,
+      "name": "InvalidTradeID",
+      "msg": "invalid trade ID"
+    },
+    {
+      "code": 6086,
+      "name": "InvalidTradeDeltaSize",
+      "msg": "invalid trade delta size"
+    },
+    {
+      "code": 6087,
+      "name": "InvalidTradeDeltaTokens",
+      "msg": "invalid trade delta tokens"
+    },
+    {
+      "code": 6088,
+      "name": "InvalidBorrowingFactor",
+      "msg": "invalid borrowing factor"
+    },
+    {
+      "code": 6089,
+      "name": "InvalidFundingFactors",
+      "msg": "invalid funding factors"
+    },
+    {
+      "code": 6090,
+      "name": "NoDelegatedAuthorityIsSet",
+      "msg": "no delegated authority is set"
+    },
+    {
+      "code": 6091,
+      "name": "ClaimableCollateralForHoldingCannotBeInOutputTokens",
+      "msg": "claimable collateral for holding cannot be in output tokens"
+    },
+    {
+      "code": 6092,
+      "name": "AdlNotEnabled",
+      "msg": "ADL is not enabled"
+    },
+    {
+      "code": 6093,
+      "name": "AdlNotRequired",
+      "msg": "ADL is not required"
+    },
+    {
+      "code": 6094,
+      "name": "InvalidAdl",
+      "msg": "invalid ADL"
+    },
+    {
+      "code": 6095,
+      "name": "SameOutputTokensNotMerged",
+      "msg": "same output tokens not merged"
+    },
+    {
+      "code": 6096,
+      "name": "EventBufferNotProvided",
+      "msg": "event buffer is not provided"
+    },
+    {
+      "code": 6097,
+      "name": "EmptyShift",
+      "msg": "empty shift"
+    },
+    {
+      "code": 6098,
+      "name": "InvalidShiftMarkets",
+      "msg": "invalid shift markets"
+    },
+    {
+      "code": 6099,
+      "name": "GTStateHasBeenInitialized",
+      "msg": "GT State has been initialized"
+    },
+    {
+      "code": 6100,
+      "name": "InvalidGTConfig",
+      "msg": "invalid GT config"
+    },
+    {
+      "code": 6101,
+      "name": "InvalidGTDiscount",
+      "msg": "invalid GT discount"
+    },
+    {
+      "code": 6102,
+      "name": "UserAccountHasBeenInitialized",
+      "msg": "user account has been initialized"
+    },
+    {
+      "code": 6103,
+      "name": "ReferralCodeHasBeenSet",
+      "msg": "referral code has been set"
+    },
+    {
+      "code": 6104,
+      "name": "ReferrerHasBeenSet",
+      "msg": "referrer has been set"
+    },
+    {
+      "code": 6105,
+      "name": "InvalidUserAccount",
+      "msg": "invalid user account"
+    },
+    {
+      "code": 6106,
+      "name": "ReferralCodeMismatched",
+      "msg": "referral code mismatched"
+    },
+    {
+      "code": 6107,
+      "name": "SelfReferral",
+      "msg": "self-referral is not allowed"
+    },
+    {
+      "code": 6108,
+      "name": "MutualReferral",
+      "msg": "mutual-referral is not allowed"
+    },
+    {
+      "code": 6109,
+      "name": "InvalidMarketConfigKey",
+      "msg": "invalid market config key"
+    },
+    {
+      "code": 6110,
+      "name": "InvalidCollateralToken",
+      "msg": "invalid collateral token"
+    },
+    {
+      "code": 6111,
+      "name": "DisabledMarket",
+      "msg": "disabled market"
+    },
+    {
+      "code": 6112,
+      "name": "FailedToCalculateGlvValueForMarket",
+      "msg": "failed to calculate GLV value for this market"
+    },
+    {
+      "code": 6113,
+      "name": "FailedToCalculateGlvAmountToMint",
+      "msg": "failed to calculate GLV amount to mint"
+    },
+    {
+      "code": 6114,
+      "name": "FailedToCalculateMarketTokenAmountToBurn",
+      "msg": "failed to calculate market token amount to burn"
+    },
+    {
+      "code": 6115,
+      "name": "ExceedMaxGlvMarketTokenBalanceAmount",
+      "msg": "GLV max market token balance amount exceeded"
+    },
+    {
+      "code": 6116,
+      "name": "ExceedMaxGlvMarketTokenBalanceValue",
+      "msg": "GLV max market token balance value exceeded"
+    },
+    {
+      "code": 6117,
+      "name": "EmptyGlvWithdrawal",
+      "msg": "empty GLV withdrawal"
+    },
+    {
+      "code": 6118,
+      "name": "GlvNegativeMarketPoolValue",
+      "msg": "GLV: negative market pool value"
+    },
+    {
+      "code": 6119,
+      "name": "GlvDepositIsNotAllowed",
+      "msg": "GLV: deposit is not allowed with the given market"
+    },
+    {
+      "code": 6120,
+      "name": "GlvShiftIntervalNotYetPassed",
+      "msg": "GLV: shift interval not yet passed"
+    },
+    {
+      "code": 6121,
+      "name": "GlvShiftMaxPriceImpactExceeded",
+      "msg": "GLV: shift max price impact exceeded"
+    },
+    {
+      "code": 6122,
+      "name": "GlvShiftValueNotLargeEnough",
+      "msg": "GLV: shift value is not large enough"
+    },
+    {
+      "code": 6123,
+      "name": "TokenDecimalsChanged",
+      "msg": "the decimals of token is immutable"
+    },
+    {
+      "code": 6124,
+      "name": "PriceIsStale",
+      "msg": "price is stale"
+    },
+    {
+      "code": 6125,
+      "name": "Deprecated",
+      "msg": "deprecated"
+    },
+    {
+      "code": 6126,
+      "name": "IndexOverflow",
+      "msg": "index overflow"
+    },
+    {
+      "code": 6127,
+      "name": "MarketClosed",
+      "msg": "market is closed"
+    },
+    {
+      "code": 6128,
+      "name": "ProviderDoesNotSupportMarketStatus",
+      "msg": "market status flags are not yet supported for this price provider"
+    },
+    {
+      "code": 6129,
+      "name": "BuilderFeeFactorExceedsMaxFactor",
+      "msg": "builder fee factor exceeds the max builder fee factor"
+    },
+    {
+      "code": 6130,
+      "name": "UnsettledBuilderFee",
+      "msg": "order has an unsettled builder fee"
+    },
+    {
+      "code": 6131,
+      "name": "BuilderFeeExceedsCollateral",
+      "msg": "builder fee exceeds the collateral increment"
+    },
+    {
+      "code": 6132,
+      "name": "BuilderFeeFinalOutputTokenMismatch",
+      "msg": "builder fee requires the final output token to equal the collateral token"
+    },
+    {
+      "code": 6133,
+      "name": "BuilderFeeSwapTypeNotAllowed",
+      "msg": "this decrease position swap type is not allowed together with a builder fee"
+    },
+    {
+      "code": 6134,
+      "name": "BuilderFeeFactorMismatched",
+      "msg": "builder fee factor does not match the expected factor"
+    },
+    {
+      "code": 6135,
+      "name": "BuilderFeeOrderKindNotAllowed",
+      "msg": "builder fee is not allowed for this order kind"
+    },
+    {
+      "code": 6136,
+      "name": "BuilderFeeFinalOutputTokenNotInitialized",
+      "msg": "the order's final output token is not initialized"
+    },
+    {
+      "code": 6137,
+      "name": "BuilderFeeFinalOutputTokenEscrowNotInitialized",
+      "msg": "the order's final output token escrow is not initialized"
+    }
+  ]
+}

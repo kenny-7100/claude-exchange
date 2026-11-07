@@ -1,0 +1,45 @@
+{
+  "index": 0,
+  "provider": 0,
+  "report_ttl_seconds": 300,
+  "refresh_hint_seconds": 300,
+  "feed_id_namespace": "gmx-solana-lab:mock:v1:",
+  "feeds": {
+    "GFVTheo3uGcH4bS5Q7QJ7pJemX7VFHaiy6NXTDjsxHpu": {
+      "symbol": "KBTC",
+      "feed_id_hex": "0003f695e0c376163f53a1862e5779873e3e47ab6abb42f9010eb892b6b5b2f9"
+    },
+    "GUYoV6GFPY1m4cGXdW1dM2ViuefrvtajCY7JZBQ6U9J": {
+      "symbol": "KDOGE",
+      "feed_id_hex": "0003d680dc4738f5d6313bb9abe7629e7580953f9ef2f6ddc4484081dad5df56"
+    },
+    "4M9ry6DjSX3YgT5pCumpHpopZLSkGawWRaDEZXkwRuvh": {
+      "symbol": "KETH",
+      "feed_id_hex": "0003061a9cd3240bdbf79e468e64ca719b92ee090022149b635b6998f17b6ddf"
+    },
+    "33pDMY4jYeoTiyw4Q5V9vcxLptb69ik8h7CZmebx9tkw": {
+      "symbol": "KHYPE",
+      "feed_id_hex": "00033608f035e40d2b557d440b7a4a6ad25c9dccbf2658941ded4fe7ecf493e3"
+    },
+    "DmFMLGojMHqf35xdBb5iLzJaDjJwk6cSnFCWzqxrSiQm": {
+      "symbol": "KLINK",
+      "feed_id_hex": "000318b9ccb166577788cacbb3fc9f86773913241f761422edc12335aea1c33d"
+    },
+    "45UWVNFcCgqYZ7gcAzVRM7Fnqz8HP7x3Qs2x1zmjYhpk": {
+      "symbol": "KSOL",
+      "feed_id_hex": "000376b7165c2a2f95e9a131f02c7a7302af4c70d7b80e0b6a5accde48d145c6"
+    },
+    "VyM6PZQ853RLKreXx73KxrcVWG2atySUyGwgm6C8z4d": {
+      "symbol": "KUSDC",
+      "feed_id_hex": "0003d052926617d7086769949f0754cc3adc6795257dc84b1a96daaad511ec7c"
+    },
+    "CXX4EpBM8Y5eoR7hYRCkPmUBA4LHqqjyv19pZE8627xV": {
+      "symbol": "KUSDT",
+      "feed_id_hex": "0003e81ffcfb78dd1deeb5d2ba6b2f9bbd117ae80f14eaacd9e9de8085705046"
+    },
+    "9v3cibub5Le4dmyhnrAMjJawZpjMQMMZvSwHrFp35HTb": {
+      "symbol": "KWETH",
+      "feed_id_hex": "00030a1882dfdd38ffa85bf89478b735260d41623a740c42ca85ecb82fa5cbd7"
+    }
+  }
+}

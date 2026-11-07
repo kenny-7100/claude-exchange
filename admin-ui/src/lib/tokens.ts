@@ -1,12 +1,12 @@
-import kbtc from '../../../tokens/kbtc/token.json'
-import kdoge from '../../../tokens/kdoge/token.json'
-import keth from '../../../tokens/keth/token.json'
-import khype from '../../../tokens/khype/token.json'
-import klink from '../../../tokens/klink/token.json'
-import ksol from '../../../tokens/ksol/token.json'
-import kusdc from '../../../tokens/kusdc/token.json'
-import kusdt from '../../../tokens/kusdt/token.json'
-import kweth from '../../../tokens/kweth/token.json'
+import kbtc from '../../../tokens/kbtc/token.json' with { type: 'json' }
+import kdoge from '../../../tokens/kdoge/token.json' with { type: 'json' }
+import keth from '../../../tokens/keth/token.json' with { type: 'json' }
+import khype from '../../../tokens/khype/token.json' with { type: 'json' }
+import klink from '../../../tokens/klink/token.json' with { type: 'json' }
+import ksol from '../../../tokens/ksol/token.json' with { type: 'json' }
+import kusdc from '../../../tokens/kusdc/token.json' with { type: 'json' }
+import kusdt from '../../../tokens/kusdt/token.json' with { type: 'json' }
+import kweth from '../../../tokens/kweth/token.json' with { type: 'json' }
 
 export const supportedTokens = [kbtc, kdoge, keth, khype, klink, ksol, kusdc, kusdt, kweth]
   .map((token) => ({

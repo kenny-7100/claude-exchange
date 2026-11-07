@@ -9,7 +9,10 @@
     "typecheck": "tsc --noEmit",
     "tokens:check": "tsx scripts/deploy-test-tokens.ts --check",
     "tokens:deploy": "tsx scripts/deploy-test-tokens.ts --deploy",
-    "tokens:verify": "tsx scripts/deploy-test-tokens.ts --verify-only"
+    "tokens:verify": "tsx scripts/deploy-test-tokens.ts --verify-only",
+    "test:mock-prices": "tsx --test admin-ui/tests/mock-prices.test.ts",
+    "mock-prices:check": "tsx scripts/check-mock-prices.ts",
+    "idl:mock": "tsx scripts/generate-mock-idl.ts"
   },
   "dependencies": {
     "@metaplex-foundation/mpl-token-metadata": "3.4.0",

@@ -1,4 +1,5 @@
 import { StrictMode } from 'react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './polyfills'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
@@ -10,6 +11,8 @@ import './index.css'
 import App from './App.tsx'
 import ErrorBoundary from './components/ErrorBoundary'
 
+const queryClient = new QueryClient()
+
 const endpoint = import.meta.env.VITE_SOLANA_RPC_URL || clusterApiUrl('devnet')
 const connectionConfig = { wsEndpoint: import.meta.env.VITE_SOLANA_WS_URL || undefined }
 
@@ -19,7 +22,7 @@ createRoot(document.getElementById('root')!).render(
       <WalletProvider wallets={[]} autoConnect>
         <WalletModalProvider>
           <BrowserRouter>
-            <ErrorBoundary><App /></ErrorBoundary>
+            <ErrorBoundary><QueryClientProvider client={queryClient}><App /></QueryClientProvider></ErrorBoundary>
           </BrowserRouter>
         </WalletModalProvider>
       </WalletProvider>

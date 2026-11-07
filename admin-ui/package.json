@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "idl:mock": "npm --prefix .. run idl:mock"
   },
   "dependencies": {
     "@coral-xyz/anchor": "0.31.1",
@@ -26,6 +27,7 @@
     "react-dom": "^19.3.1",
     "react-hook-form": "7.91.0",
     "react-router-dom": "7.18.5",
+    "snappyjs": "0.7.0",
     "tailwind-merge": "3.7.0",
     "zod": "4.6.7"
   },
@@ -39,6 +41,7 @@
     "@types/node": "^24.19.2",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "@types/snappyjs": "0.7.1",
     "@vitejs/plugin-react": "^6.1.2",
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^10.14.0",
